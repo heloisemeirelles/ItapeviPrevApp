@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "207172778647",
+    "firebase_url": "https://itapeviprev.firebaseio.com",
+    "project_id": "itapeviprev",
+    "storage_bucket": "itapeviprev.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:207172778647:android:454cb94e13786141",
+        "android_client_info": {
+          "package_name": "itapeviprev.cursoandroid.com.itapeviprev"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "207172778647-54q1o6ffd596vksb8tn1c5kqr45g71sl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "itapeviprev.cursoandroid.com.itapeviprev",
+            "certificate_hash": "03f0bb5765427c4c8c8c1b71927fc0cbf32ecd47"
+          }
+        },
+        {
+          "client_id": "207172778647-eelb3qaeu15ql3m9vuelluskv0tihfo6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDAk1P3IGWj89KeEyj5u9eyR-aKFq9JUOQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "207172778647-eelb3qaeu15ql3m9vuelluskv0tihfo6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

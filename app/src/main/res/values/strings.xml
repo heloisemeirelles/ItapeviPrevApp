@@ -1,0 +1,52 @@
+<resources>
+    <string name="app_name">Itapevi Prev</string>
+
+    <!-- Landing Page -->
+    <string name="check_funds_health">Acompanhar a saúde do Fundo agora ficou mais rápido</string>
+    <string name="itapevi_prev_changed">O ITAPEVIPREV mudou e agora tudo ficou mais fácil</string>
+    <string name="login">Entrar com login</string>
+    <string name="login_without_account">Entrar sem login</string>
+    <string name="create_my_account">Criar minha conta</string>
+    <string name="you_always_up_to_date">Você sempre atualizado sobre as datas e previsões de pagamentos</string>
+    <string name="keep_informed_about_benefits">Mantenha-se informado sobre benefícios e modalidades de aposentadoria</string>
+
+    <!-- Login -->
+    <string name="email">E-mail</string>
+    <string name="password">Senha</string>
+    <string name="type_your_email">Digite seu e-mail</string>
+    <string name="type_your_password">Digite sua senha</string>
+    <string name="invalid_email">E-mail inválido.</string>
+    <string name="remember_me">Lembrar de mim</string>
+    <string name="signin">Entrar</string>
+    <string name="invalid_password">Senha inválida.</string>
+
+    <!-- Common -->
+    <string name="loading">Carregando...</string>
+    <string name="title_core">core</string>
+
+    <!-- Create Account -->
+    <string name="full_name">Nome Completo</string>
+    <string name="date_of_birth">Data de Nascimento</string>
+    <string name="date_of_birth_placeholder">Ex.: 10/10/2000</string>
+    <string name="confirm_password">Confirme a senha</string>
+    <string name="confirm_your_password">Confirme sua senha</string>
+    <string name="identify_yourself_below">Identifique-se abaixo</string>
+    <string name="retiree">Aposentado</string>
+    <string name="pensioner">Pensionista</string>
+    <string name="others">Outros</string>
+    <string name="enter_your_full_name">Digite seu nome completo</string>
+    <string name="passwords_do_not_match">As senhas não correspondem.</string>
+    <string name="fullname_invalid">Nome Completo inválido.</string>
+    <string name="min_characters_password">Senha deve ter, no mínimo, 6 caracteres</string>
+
+    <!-- Board -->
+    <string name="actions_pane">Painel de ações</string>
+    <string name="benefits">Benefícios</string>
+    <string name="pdf_lcl">PDF LCL</string>
+    <string name="payment_info">Informação de pagamento</string>
+    <string name="fund_health">Saúde do fundo</string>
+    <string name="the_fund">O fundo</string>
+    <string name="process_information">Informação do processo</string>
+    <string name="council">Conselho</string>
+    <string name="contact">Contato</string>
+</resources>
