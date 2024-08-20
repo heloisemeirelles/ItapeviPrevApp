@@ -123,7 +123,7 @@ class CreateAccountViewModel @Inject constructor(
             identification = selectedIdentificationCard.value
         )
         viewModelScope.launch(Dispatchers.IO) {
-            addUserUseCase.invoke(userEntity, password.value).collect() { resource ->
+            addUserUseCase.invoke(userEntity).collect() { resource ->
                 when (resource) {
                     is Resource.Loading -> {
                         _signUpState.value = SignUpState.Loading

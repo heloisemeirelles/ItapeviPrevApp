@@ -27,6 +27,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import itapeviprev.cursoandroid.com.itapeviprev.R
+import itapeviprev.cursoandroid.com.itapeviprev.feature.board.navigation.BoardNavigationScreens
 import itapeviprev.cursoandroid.com.itapeviprev.feature.signup.ui.widgets.CardInfo
 import itapeviprev.cursoandroid.com.itapeviprev.feature.signup.ui.widgets.IdentificationCardsList
 import itapeviprev.cursoandroid.com.itapeviprev.feature.signup.ui.widgets.listOfIdentification
@@ -62,7 +63,7 @@ fun CreateAccountScreen(
 
     when (signUpState) {
         is SignUpState.Completed -> {
-            navController.navigate(AppNavigationScreens.BoardScreen.name)
+            navController.navigate(BoardNavigationScreens.BoardScreen.name)
         }
 
         is SignUpState.Loading -> {

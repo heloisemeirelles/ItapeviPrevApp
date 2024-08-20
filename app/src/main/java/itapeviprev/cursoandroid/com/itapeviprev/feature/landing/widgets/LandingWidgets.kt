@@ -117,7 +117,8 @@ fun BannerSliderCard() {
                 Image(
                     modifier = Modifier.size(180.dp),
                     painter = imageSlider[page].icon,
-                    contentDescription = "")
+                    contentDescription = ""
+                )
 
                 Spacer(modifier = Modifier.size(24.dp))
 
@@ -190,8 +191,11 @@ private fun PageIndicator(
 }
 
 @Composable
-fun ButtonsContainer(onLoginClick: () -> Unit,
-                     onCreateAccountClick: () -> Unit) {
+fun ButtonsContainer(
+    onLoginClick: () -> Unit,
+    onCreateAccountClick: () -> Unit,
+    onNoAccountClick: () -> Unit
+) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -212,7 +216,7 @@ fun ButtonsContainer(onLoginClick: () -> Unit,
             labelColor = PrimaryBlue,
             label = stringResource(id = R.string.login_without_account),
             borderColor = PrimaryBlue
-        ) {}
+        ) { onNoAccountClick() }
 
         Spacer(modifier = Modifier.size(16.dp))
 
@@ -221,7 +225,7 @@ fun ButtonsContainer(onLoginClick: () -> Unit,
             labelColor = PrimaryBlue,
             label = stringResource(id = R.string.create_my_account),
 
-            ) {onCreateAccountClick()}
+            ) { onCreateAccountClick() }
     }
 
 
@@ -240,7 +244,8 @@ fun LoginWidgetsPreview() {
                         .padding(24.dp),
                     verticalArrangement = Arrangement.Center
                 ) {
-                    ButtonsContainer(onLoginClick = {}) {}
+                    ButtonsContainer(onLoginClick = {},
+                        onCreateAccountClick = {}) {}
                 }
             }
         }

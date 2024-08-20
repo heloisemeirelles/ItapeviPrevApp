@@ -37,6 +37,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import itapeviprev.cursoandroid.com.itapeviprev.R
+import itapeviprev.cursoandroid.com.itapeviprev.feature.board.navigation.BoardNavigationScreens
 import itapeviprev.cursoandroid.com.itapeviprev.feature.login.viewModel.LoginViewModel
 import itapeviprev.cursoandroid.com.itapeviprev.navigation.AppNavigationScreens
 import itapeviprev.cursoandroid.com.itapeviprev.theme.PrimaryBlue
@@ -52,16 +53,16 @@ fun LoginScreen(
 ) {
     val showPassword = remember { mutableStateOf(false) }
     val loginState by viewModel.loginState.collectAsState()
-    val isLoading = remember { mutableStateOf(false)}
+    val isLoading = remember { mutableStateOf(false) }
 
-    when(loginState) {
+    when (loginState) {
         is LoginState.Loading -> {
             isLoading.value = true
         }
 
         is LoginState.Completed -> {
             isLoading.value = false
-            navController.navigate(AppNavigationScreens.BoardScreen.name)
+            navController.navigate(BoardNavigationScreens.BoardScreen.name)
         }
 
         is LoginState.Error -> {
@@ -77,7 +78,8 @@ fun LoginScreen(
         }
 
         else -> {
-            isLoading.value = false }
+            isLoading.value = false
+        }
     }
     Surface(
         modifier = Modifier
@@ -91,7 +93,11 @@ fun LoginScreen(
                 .background(Color.White)
 
         ) {
-            Column(Modifier.padding(24.dp).fillMaxSize()) {
+            Column(
+                Modifier
+                    .padding(24.dp)
+                    .fillMaxSize()
+            ) {
                 HeaderWithOneIcon(
                     icon = painterResource(id = R.drawable.ic_back_arrow)
                 ) {
@@ -121,26 +127,39 @@ fun LoginScreen(
                     EmailTextField(
                         email = viewModel.email,
                         backgroundColor = viewModel.fieldBackgroundColor(viewModel.emailHasError()),
-                        borderColor = viewModel.fieldBorderColor(viewModel.emailHasError(), viewModel.isEmailFocused.value),
+                        borderColor = viewModel.fieldBorderColor(
+                            viewModel.emailHasError(),
+                            viewModel.isEmailFocused.value
+                        ),
                         hasError = viewModel.emailHasError(),
                         isOnFocus = viewModel.isEmailFocused
 
                     )
                     Spacer(modifier = Modifier.size(16.dp))
-                    PasswordField(password = viewModel.password,
+                    PasswordField(
+                        password = viewModel.password,
                         backgroundColor = viewModel.fieldBackgroundColor(viewModel.passwordHasError()),
-                        borderColor = viewModel.fieldBorderColor(viewModel.passwordHasError(), viewModel.isPasswordFocused.value),
+                        borderColor = viewModel.fieldBorderColor(
+                            viewModel.passwordHasError(),
+                            viewModel.isPasswordFocused.value
+                        ),
                         hasError = viewModel.passwordHasError(),
                         showPassword = showPassword,
-                        isOnFocus = viewModel.isPasswordFocused)
+                        isOnFocus = viewModel.isPasswordFocused
+                    )
                     Spacer(modifier = Modifier.size(32.dp))
                     RememberMeToggle(viewModel.rememberMe)
-                    Spacer(modifier = Modifier.size(24.dp) )
-                    RoundedButton(backgroundColor = PrimaryBlue, labelColor = Color.White, label = stringResource(
-                        id = R.string.signin
-                    ), isLoading = isLoading.value,
-                        enabled = viewModel.isLoginButtonEnabled()) {
-                        if(!isLoading.value) {
+                    Spacer(modifier = Modifier.size(24.dp))
+                    RoundedButton(
+                        backgroundColor = PrimaryBlue,
+                        labelColor = Color.White,
+                        label = stringResource(
+                            id = R.string.signin
+                        ),
+                        isLoading = isLoading.value,
+                        enabled = viewModel.isLoginButtonEnabled()
+                    ) {
+                        if (!isLoading.value) {
                             viewModel.login()
                         }
                     }
@@ -155,21 +174,28 @@ fun LoginScreen(
 @Composable
 fun RememberMeToggle(rememberMe: MutableState<Boolean>) {
 
-    Row(modifier = Modifier
-        .wrapContentSize()
-        .fillMaxWidth(),
+    Row(
+        modifier = Modifier
+            .wrapContentSize()
+            .fillMaxWidth(),
         horizontalArrangement = Arrangement.End,
-        verticalAlignment = Alignment.CenterVertically) {
-        Text(text = stringResource(id = R.string.remember_me), style = MaterialTheme.typography.bodyMedium)
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Text(
+            text = stringResource(id = R.string.remember_me),
+            style = MaterialTheme.typography.bodyMedium
+        )
         Spacer(modifier = Modifier.size(16.dp))
-        Switch(checked = rememberMe.value, onCheckedChange = {rememberMe.value = !rememberMe.value},
+        Switch(
+            checked = rememberMe.value, onCheckedChange = { rememberMe.value = !rememberMe.value },
             colors = androidx.compose.material3.SwitchDefaults.colors(
                 checkedTrackColor = Color.Blue,
                 checkedThumbColor = Color.White,
                 uncheckedBorderColor = Color.Blue,
                 uncheckedTrackColor = Color.White,
                 uncheckedThumbColor = Color.Blue,
-            ))
+            )
+        )
     }
 }
 
