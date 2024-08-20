@@ -1,28 +1,28 @@
 package itapeviprev.cursoandroid.com.itapeviprev.navigation
 
 import androidx.compose.runtime.Composable
+import androidx.navigation.NavController
+import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import itapeviprev.cursoandroid.com.itapeviprev.feature.board.BoardScreen
+import androidx.navigation.navigation
+
 import itapeviprev.cursoandroid.com.itapeviprev.feature.landing.LandingPageScreen
 import itapeviprev.cursoandroid.com.itapeviprev.feature.login.ui.LoginScreen
 import itapeviprev.cursoandroid.com.itapeviprev.feature.signup.ui.CreateAccountScreen
 
-@Composable
-fun AppNavigation(navController: NavHostController, userIsLoggedIn: Boolean) {
-    NavHost(navController = navController,
-        startDestination = if(userIsLoggedIn) AppNavigationScreens.BoardScreen.name else AppNavigationScreens.LandingPageScreen.name) {
+fun NavGraphBuilder.appNavigation(navController: NavHostController) {
+    navigation(
+        startDestination = AppNavigationScreens.LandingPageScreen.name,
+        route = AppNavigationScreens.AppNavigationRoute.name
+    ) {
         composable(route = AppNavigationScreens.LandingPageScreen.name) {
             LandingPageScreen(navController)
         }
 
         composable(route = AppNavigationScreens.LoginScreen.name) {
             LoginScreen(navController)
-        }
-
-        composable(route = AppNavigationScreens.BoardScreen.name) {
-            BoardScreen()
         }
 
         composable(route = AppNavigationScreens.CreateAccountScreen.name) {

@@ -14,10 +14,14 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
-import itapeviprev.cursoandroid.com.itapeviprev.navigation.AppNavigation
 import itapeviprev.cursoandroid.com.itapeviprev.theme.ItapeviPrevTheme
 import dagger.hilt.android.AndroidEntryPoint
+import itapeviprev.cursoandroid.com.itapeviprev.feature.board.navigation.BoardNavigationScreens
+import itapeviprev.cursoandroid.com.itapeviprev.feature.board.navigation.boardNavigation
+import itapeviprev.cursoandroid.com.itapeviprev.navigation.AppNavigationScreens
+import itapeviprev.cursoandroid.com.itapeviprev.navigation.appNavigation
 import java.util.Timer
 import javax.inject.Inject
 import kotlin.concurrent.schedule
@@ -45,7 +49,13 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    AppNavigation(navController, viewModel.userIsLoggedIn.value)
+                    NavHost(
+                        navController,
+                        startDestination = if (viewModel.userIsLoggedIn.value) BoardNavigationScreens.BoardRoute.name else AppNavigationScreens.AppNavigationRoute.name
+                    ) {
+                        appNavigation(navController)
+                        boardNavigation(navController)
+                    }
                 }
             }
         }
