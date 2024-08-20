@@ -23,6 +23,7 @@
     <!-- Common -->
     <string name="loading">Carregando...</string>
     <string name="title_core">core</string>
+    <string name="coming_soon">Em breve</string>
 
     <!-- Create Account -->
     <string name="full_name">Nome Completo</string>
@@ -49,4 +50,122 @@
     <string name="process_information">Informação do processo</string>
     <string name="council">Conselho</string>
     <string name="contact">Contato</string>
+    <string name="contribution_simulator">Simulador de contribuição</string>
+    <string name="important_announcement">Aviso importante!</string>
+    <string name="access">Acessar</string>
+
+    <!-- Contribution Simulator -->
+    <string name="insert_total_value">Insira o valor total bruto da contribuição e toque no botão %s1“Simular”%s1.</string>
+    <string name="contribution_value">Valor da contribuição</string>
+    <string name="add_contribution_value">Insira o valor da contribuição</string>
+    <string name="simulate">Simular</string>
+    <string name="progressive_tax_rate">Alíquota progressiva</string>
+    <string name="simulated_value">Valor simulado</string>
+    <string name="effective_tax_rate_of">Alíquota efetiva de</string>
+    <string name="salary">Salário</string>
+    <string name="tax_rate">Alíquota</string>
+    <string name="value">Valor</string>
+    <string name="from_to">De R$%s1 a R$%s2</string>
+    <string name="to_value">Até R$%s1</string>
+    <string name="tax_rate_75">7,5%</string>
+    <string name="tax_rate_9">9%</string>
+    <string name="tax_rate_12">12%</string>
+    <string name="tax_Rate_14">14%</string>
+    <string name="tax_rate_14_5">14,5%</string>
+    <string name="tax_rate_16_5">16,5%</string>
+    <string name="tax_rate_19">19%</string>
+    <string name="tax_rate_22">22%</string>
+    <string name="until_1045">Até (R$ 1.045,00)</string>
+    <string name="from_1045_to_2089">De R$ 1.045,01 a R$ 2.089,60</string>
+    <string name="from_2089_to_3134">De R$ 2.089,61 a R$ 3.134,40</string>
+    <string name="from_3134_to_6101">De R$ 3.134,41 a R$ 6.101,06</string>
+    <string name="from_6101_to_10448">De R$ 6.101,07 a R$ 10.448,00</string>
+    <string name="from_10448_to_20896">De R$ 10.448,01 a R$ 20.896,00</string>
+    <string name="from_20896_to_40747">De R$ 20.896,01 a R$ 40.747,20</string>
+    <string name="beyond_40747">Acima de R$ 40.747,20</string>
+
+    <!-- Important Announcement -->
+    <string name="attention_retiree">Atenção Aposentados e Pensionistas! É hora de se recadastrar!</string>
+    <string name="who_needs_to_apply">Quem precisa se recadastrar?</string>
+    <string name="birthday_person_of_this_month">Aniversariantes deste mês.</string>
+    <string name="why_is_it_important">Por que é importante?</string>
+    <string name="to_avoid_benefit_to_be_blocked">Para evitar o bloqueio do seu benefício.</string>
+    <string name="what_to_do">O que fazer?</string>
+    <string name="go_in_your_birth_month">Compareça no mês do seu aniversário.</string>
+
+    <!-- Benefits -->
+    <string name="volunteer_retirement">Aposentadoria voluntária</string>
+    <string name="special_retirement_for_professors">Aposentadoria especial para professor</string>
+    <string name="disablement_retirement">Aposentadoria por invalidez</string>
+    <string name="death_pension">Pensão por morte</string>
+    <string name="mandatory_retirement">Aposentadoria compulsória</string>
+    <string name="special_retirement_for_people_with_disability">Aposentadoria especial para pessoas com deficiência</string>
+    <string name="document_relation">Relação de documentos</string>
+    <string name="open_entire_text">Abrir texto completo</string>
+    <string name="close_text">Fechar texto</string>
+    <string name="phone_number">011 4144-6752</string>
+    <string name="formatted_phone_number">(11) 4144-6752</string>
+    <string name="telephone">Telefone</string>
+
+    <!-- Volunteer Retirement -->
+    <string name="volunteer_retirement_title_1">Aposentadoria voluntária por Idade e Tempo de Contribuição</string>
+    <string name="volunteer_retirement_text_1">O servidor fará jus à aposentadoria voluntária por idade e tempo de contribuição, com proventos calculados na forma prevista no artigo 56, desde que preencha, cumulativamente, os seguintes requisitos:\n\n  •  60 anos de idade + 35 anos de contribuição, se homem.\n  •  55 anos de idade + 30 anos de contribuição, se mulher.\n\nO servidor deverá, ainda, cumprir tempo mínimo de 10 anos de efetivo exercício no serviço público e 5 anos no cargo efetivo em que se dará a aposentadoria.\n\nPara efeito de cálculos das aposentadorias, será considerada a média aritmética simples das maiores remunerações ou subsídios dos cargos efetivos, utilizados como base para as contribuições do servidor, correspondente a 80% de todo o período contributivo desde a competência julho de 1994 ou desde a do início da contribuição, se posterior àquela competência.\n\nO reajuste ocorrerá na mesma data em que o ocorrer o reajuste do RGPS (Regime Geral de Previdência Social) para manutenção do valor real, de acordo com a variação do índice definido pela federação.</string>
+    <string name="volunteer_retirement_title_2">Aposentadoria voluntária por idade</string>
+    <string name="volunteer_retirement_text_2">O servidor efetivo terá direito a aposentadoria voluntária com proventos proporcionais ao tempo de contribuição, desde que se enquadre nas seguintes condições:\n\n  •   65 anos de idade, se homem.\n  •   60 anos de idade, se mulher.\n\nO servidor deverá, ainda, cumprir tempo mínimo de 10 anos de efetivo exercício no serviço público e 5 anos no cargo efetivo em que se dará a aposentadoria.\n\nPara efeito de cálculos das aposentadorias, será considerada a média aritmética simples das maiores remunerações ou subsídios dos cargos efetivos, utilizados como base para as contribuições do servidor, correspondente a 80% de todo o período contributivo desde a competência julho de 1994 ou desde a do início da contribuição, se posterior àquela competência.\n\nO reajuste ocorrerá na mesma data em que o ocorrer o reajuste do RGPS (Regime Geral de Previdência Social) para manutenção do valor real, de acordo com a variação do índice definido pela federação.</string>
+
+    <!-- Professor Retirement -->
+    <string name="professor_retirement_text_1">
+        O(a) professor(a) que comprove, exclusivamente, tempo de efetivo exercício das funções de magistério na educação infantil e no ensino fundamental e médio, tratando-se de aposentadoria voluntária por idade e tempo de contribuição, terá os requisitos de idade e tempo de contribuição reduzidos em cinco anos:\n\n
+          •   55 anos de idade e 30 anos de tempo de contribuição, se homem.\n
+          •   50 anos de idade e 25 anos de tempo de contribuição, se mulher.\n\nO servidor deverá, ainda, cumprir tempo mínimo de 10 anos de efetivo exercício no serviço público e 5 anos no cargo efetivo em que se dará a aposentadoria.\n\nPara efeito de cálculos das aposentadorias, será considerada a média aritmética simples das maiores remunerações ou subsídios dos cargos efetivos, utilizados como base para as contribuições do servidor, correspondente a 80% de todo o período contributivo desde a competência julho de 1994 ou desde a do início da contribuição, se posterior àquela competência.\n\nO reajuste ocorrerá na mesma data em que o ocorrer o reajuste do RGPS (Regime Geral de Previdência Social) para manutenção do valor real, de acordo com a variação do índice definido pela federação.
+    </string>
+
+    <!-- Disablement Retirement -->
+    <string name="disablement_retirement_title_1">Benefício de Aposentadoria por Invalidez</string>
+    <string name="disablement_retirement_text_1">
+        O servidor efetivo poderá ser aposentado por invalidez com proventos integrais pela média quando, em decorrência de acidente de trabalho, doença profissional ou doença grave, contagiosa ou incurável especificada em lei. A legislação prevê aposentadoria para outras hipóteses de invalidez, com proventos proporcionais ao tempo de contribuição.\n\nEm ambos os casos, o servidor será submetido à junta Médica Oficial, que atestará a invalidez quando caracterizada a incapacidade para o desempenho das atribuições do cargo ou verificada a impossibilidade de readaptação nos termos da lei.\n\nSão consideradas doenças graves todas as doenças encontradas na PORTARIA INTERMINISTERIAL MPAS/MS Nº 2.998, DE 23 DE AGOSTO DE 2001:\n\n
+        I - tuberculose ativa;\n
+        II - hanseníase;\n
+        III - alienação mental;\n
+        IV - neoplasia maligna;\n
+        V - cegueira;\n
+        VI - paralisia irreversível e incapacitante;\n
+        VII - cardiopatia grave;\n
+        VIII - doença de Parkinson;\n
+        IX - espondiloartrose anquilosante;\n
+        X - nefropatia grave;\n
+        XI - estado avançado da doença de Paget (osteíte deformante);\n
+        XII - síndrome da deficiência imunológica adquirida - Aids;\n
+        XIII - contaminação por radiação, com base em conclusão da medicina especializada;\n
+        XIV - hepatopatia grave.\n\nPara efeito de cálculos das aposentadorias, será considerada a média aritmética simples das maiores remunerações ou subsídios dos cargos efetivos, utilizados como base para as contribuições do servidor, correspondente a 80% de todo o período contributivo desde a competência julho de 1994 ou desde a do início da contribuição, se posterior àquela competência.\n\nO reajuste ocorrerá na mesma data em que ocorrer o reajuste do RGPS (Regime Geral de Previdência Social) para manutenção do valor real, de acordo com a variação do índice definido pela federação.
+    </string>
+
+    <!-- Death Pension -->
+    <string name="death_pension_title_1">Benefício de Pensão por Morte </string>
+    <string name="death_pension_text_1">
+        Benefício previdenciário pago aos dependentes do(a) servidor(a) falecido(a), seja ele ativo ou aposentado. São dependentes, conforme artigo 37 da LC nº 92/2017:\n\nI - o cônjuge, a companheira, o companheiro e o filho não emancipado, de qualquer condição, menor de 21 anos ou inválido ou que tenha deficiência intelectual ou mental ou deficiência grave, na forma da Lei Nacional nº 13.146, de 2015;\nII - os pais;\nIII - o irmão não emancipado, de qualquer condição, menor de 21 anos ou inválido ou que tenha deficiência intelectual ou mental ou deficiência grave, na forma da Lei Nacional nº 13.146, de 2015;\n\nA existência de dependente de qualquer das classes deste artigo exclui do direito às prestações os das classes seguintes.\n\n§ 2º O enteado e o menor tutelado equiparam-se a filho mediante declaração judicial e do segurado, desde que comprovada a dependência econômica.\n\n§ 3º Considera-se companheira ou companheiro a pessoa que, sem ser casada, mantém união estável com o segurado ou com a segurada, de acordo com o § 3º do art. 226 da Constituição Federal e do Código Civil.\n\n§ 4º A dependência econômica das pessoas indicadas no inciso I é presumida e a das demais deve ser comprovada.\n\n§ 5º O companheiro ou a companheira homossexual de servidor ou servidora poderá integrar o rol dos dependentes, desde que comprovada a união estável, concorrendo para fins de pensão e de auxílio reclusão, como os dependentes previstos no inciso I.\n\nO direito ao benefício cessará, conforme artigo 69 da LC nº 92/2017:\n\nI - pela morte do pensionista;\nII - para o filho, a pessoa a ele equiparada ou o irmão, de ambos os sexos, ao completar vinte e um anos de idade, salvo se for inválido ou tiver deficiência intelectual ou mental ou deficiência grave;\nIII - para filho ou irmão inválido, pela cessação da invalidez;\nIV - pelo decurso do prazo de recebimento de pensão pelo cônjuge, companheiro ou companheira, nos termos do § 4º do art. 69 L.C 92/17.\nV - para cônjuge ou companheiro:\n\na) se inválido ou com deficiência, pela cessação da invalidez ou pelo afastamento da deficiência, respeitados os períodos mínimos decorrentes da aplicação das alíneas b e c;\nb) em 4 meses, se o óbito ocorrer sem que o segurado tenha vertido 18 contribuições mensais ou se o casamento ou a união estável tiverem sido iniciados em menos de 2 anos antes do óbito do segurado;\nc) transcorridos os seguintes períodos, estabelecidos de acordo com a idade do beneficiário na data do óbito do segurado, se o óbito ocorrer depois de vertidas 18 contribuições mensais e pelo menos 2 anos após o início do casamento ou da união estável:\n\n1) 3 anos, com menos de 21 anos de idade;\n2) 6 anos, entre 21 e 26 anos de idade;\n3) 10 anos, entre 27 e 29 anos de idade;\n4) 15 anos, entre 30 e 40 anos de idade;\n5) 20 anos, entre 41 e 43 anos de idade;\n6) vitalícia, com 44 ou mais anos de idade.\n\nSegundo a Lei 15.080, de 17:12.2009, são provas de dependência econômica e união estável:\n\n
+          •   Declaração do Imposto de Renda do segurado, da qual conste o interessado como seu dependente;\n
+          •   Disposições testamentárias;\n
+          •   Declaração especial formalizada perante o tabelião;\n
+          •   Prova de mesmo domicílio;\n
+          •   Prova de encargos domésticos evidentes e existência de sociedade ou comunhão nos atos da vida civil;\n
+          •   Procuração ou fiança reciprocamente outorgada;\n
+          •   Conta bancária conjunta;\n
+          •   Registro em associação de classe da qual conste o interessado como dependente do segurado;\n
+          •   Anotação constante de ficha ou livro de registro de empregados;\n
+          •   Apólice de seguro da qual conste o segurado como instituidor do seguro e a pessoa interessada como sua beneficiária;\n
+          •   Ficha de tratamento em instituição de assistência médica da qual conste o segurado como responsável;\n
+          •   Escritura de compra e venda de imóvel pelo segurado em nome do dependente.
+    </string>
+
+    <!-- Mandatory Retirement -->
+    <string name="mandatory_retirement_title_1">Benefício de Aposentadoria Compulsória</string>
+    <string name="mandatory_retirement_text_1">O servidor efetivo será aposentado compulsoriamente ao completar 75 anos de idade, com proventos proporcionais ao tempo de contribuição.\n\nPara efeito de cálculos das aposentadorias, será considerada a média aritmética simples das maiores remunerações ou subsídios dos cargos efetivos, utilizados como base para as contribuições do servidor, correspondente a 80% de todo o período contributivo desde a competência de julho de 1994 ou desde a do início da contribuição, se posterior àquela competência.\n\nO reajuste ocorrerá na mesma data em que ocorrer o reajuste do RGPS (Regime Geral de Previdência Social) para manutenção do valor real, de acordo com a variação do índice definido pela federação.</string>
+
+    <!-- Document Relation -->
+    <string name="document_relation_title_1">Requerimento para aposentadoria</string>
+    <string name="document_relation_text_1">  •   RG\n  •   CPF\n  •   PIS/PASEP\n  •   Crachá\n  •   Carteira(s) de trabalho\n  •   Certidão de nascimento (em bom estado de conservação)\n  •   Certidão de casamento atualizada (com até um ano de atualização)\n  •   Certidão do(s) filho(s) com idade até 21 anos\n  •   Atestado médico (Filho portador de deficiência)\n  •   Comprovante de endereço com CEP (Recente)\n  •   CTC INSS (em conformidade com a Legislação Vigente)\n  •   Comprovante de agendamento junto ao INSS de retirada de CTC\n  •   CTC - Outros (Estado, Prefeitura, etc.)\n  •   Documentos que comprovem recebimento ou solicitação de aposentadoria em outro instituto de previdência.</string>
+    <string name="document_relation_title_2">Requerimento para pensão</string>
+    <string name="document_relation_text_2">  •   Certidão de óbito (cópia autenticada)\n  •   Certidão de casamento (atualizada e autenticada)\n  •   RG (do ex-servidor e do requerente)\n  •   CPF (do ex-servidor e do requerente)\n  •   PIS/PASEP (do ex-servidor)\n  •   Carteira(s) de trabalho (do ex-servidor)\n  •   Certidão de nascimento do(s) filho(s) até 21 anos de idade\n  •   Atestado médico (Filho portador de deficiência)\n  •   Comprovante de endereço com CEP (recente)\n  •   Documento que comprove recebimento ou solicitação de pensão em outro instituto de previdência.
+    </string>
 </resources>
