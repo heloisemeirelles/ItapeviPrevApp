@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.input.OffsetMapping
 import androidx.compose.ui.text.input.TransformedText
+import java.text.DecimalFormat
 
 fun emailIsValid(email: String): Boolean {
     val emailRegex = Regex("^[\\w-.+]+@([\\w-]+\\.)+[\\w-]{2,4}\$")
@@ -40,4 +41,8 @@ fun creditCardFilter(text: AnnotatedString): TransformedText {
         }
 
     return TransformedText(AnnotatedString(out), creditCardOffsetTranslator)
+}
+
+fun decimalFormat(value: Double): String {
+    return DecimalFormat("0.00").format(value)
 }

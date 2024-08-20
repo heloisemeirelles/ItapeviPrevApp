@@ -30,17 +30,16 @@ val Typography = Typography(
         fontWeight = FontWeight.Normal,
         fontSize = 16.sp,
         lineHeight = 24.sp,
-        letterSpacing = 0.5.sp
+        color = PrimaryBlack
     ),
 
     bodyMedium = TextStyle(
-    fontFamily = monteserratFamily,
-    fontWeight = FontWeight.Normal,
-    fontSize = 14.sp,
-    lineHeight = 24.sp,
-    letterSpacing = 0.5.sp,
+        fontFamily = monteserratFamily,
+        fontWeight = FontWeight.Normal,
+        fontSize = 14.sp,
+        lineHeight = 24.sp,
 
-),
+        ),
     bodySmall = TextStyle(
         fontFamily = monteserratFamily,
         fontWeight = FontWeight.Normal,
@@ -53,7 +52,14 @@ val Typography = Typography(
         fontWeight = FontWeight.SemiBold,
         fontSize = 18.sp,
         lineHeight = 28.sp,
-    )
+    ),
+    labelLarge = TextStyle(
+        fontFamily = monteserratFamily,
+        fontWeight = FontWeight.Bold,
+        fontSize = 20.sp,
+        lineHeight = 24.sp,
+        color = PrimaryBlack
+    ),
     /* Other default text styles to override
     titleLarge = TextStyle(
         fontFamily = FontFamily.Default,
