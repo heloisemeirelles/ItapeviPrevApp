@@ -4,4 +4,6 @@ import itapeviprev.cursoandroid.com.itapeviprev.core.database.model.UserEntity
 
 interface ItapeviPrevRepository {
     suspend fun saveUserInfo(userEntity: UserEntity)
+
+    suspend fun getAllUsers(): List<UserEntity>
 }

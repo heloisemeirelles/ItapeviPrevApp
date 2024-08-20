@@ -10,4 +10,8 @@ class ItapeviPrevRepositoryImpl @Inject constructor(
     override suspend fun saveUserInfo(userEntity: UserEntity) {
         appDatabase.userDao().addUser(userEntity)
     }
+
+    override suspend fun getAllUsers(): List<UserEntity> {
+        return appDatabase.userDao().getAll()
+    }
 }
