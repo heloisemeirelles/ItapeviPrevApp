@@ -2,6 +2,8 @@ package itapeviprev.cursoandroid.com.itapeviprev.core.database.di
 
 import android.content.Context
 import androidx.room.Room
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -23,6 +25,11 @@ object DatabaseModule {
 
     @Provides
     fun provideUserDao(appDatabase: AppDatabase) = appDatabase.userDao()
+
+    @Provides
+    fun provideDatabaseReference(): DatabaseReference {
+        return FirebaseDatabase.getInstance().reference.child("Pagamento")
+    }
 }
 
 
