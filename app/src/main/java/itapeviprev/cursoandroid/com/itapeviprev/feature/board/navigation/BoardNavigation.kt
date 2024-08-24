@@ -4,6 +4,7 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
 import androidx.navigation.navigation
+import itapeviprev.cursoandroid.com.itapeviprev.PaymentForecastScreen
 import itapeviprev.cursoandroid.com.itapeviprev.feature.board.BoardScreen
 import itapeviprev.cursoandroid.com.itapeviprev.feature.board.features.banners.contributionSimulator.ContributionSimulatorScreen
 import itapeviprev.cursoandroid.com.itapeviprev.feature.board.features.banners.importantAnnouncement.ImportantAnnouncementScreen
@@ -13,7 +14,7 @@ import itapeviprev.cursoandroid.com.itapeviprev.feature.board.features.contact.C
 import itapeviprev.cursoandroid.com.itapeviprev.feature.board.features.councilScreen.CouncilScreen
 import itapeviprev.cursoandroid.com.itapeviprev.feature.board.features.fundHealthScreen.FundHealthScreen
 import itapeviprev.cursoandroid.com.itapeviprev.feature.board.features.fundScreen.FundScreen
-import itapeviprev.cursoandroid.com.itapeviprev.feature.board.features.paymentsInfoScreen.PaymentsInfoScreen
+import itapeviprev.cursoandroid.com.itapeviprev.feature.board.features.paymentInfo.PaymentsInfoScreen
 import itapeviprev.cursoandroid.com.itapeviprev.feature.board.features.pdfLcl.PdfLclScreen
 import itapeviprev.cursoandroid.com.itapeviprev.feature.board.features.processInfoScreen.ProcessInfoScreen
 
@@ -35,7 +36,7 @@ fun NavGraphBuilder.boardNavigation(navController: NavHostController) {
         }
 
         composable(route = BoardNavigationScreens.PaymentsInfoScreen.name) {
-            PaymentsInfoScreen()
+            PaymentsInfoScreen(navController)
         }
 
         composable(route = BoardNavigationScreens.FundHealthScreen.name) {
@@ -69,6 +70,10 @@ fun NavGraphBuilder.boardNavigation(navController: NavHostController) {
         composable(route = BoardNavigationScreens.BenefitScreen.name + "/{benefitType}") { backStackEntry ->
             val message = backStackEntry.arguments?.getString("benefitType")
             BenefitScreen(navController, benefitType = message.toString())
+        }
+
+        composable(route = BoardNavigationScreens.PaymentForecastScreen.name) {
+            PaymentForecastScreen(navController = navController)
         }
     }
 }

@@ -13,5 +13,6 @@ enum class BoardNavigationScreens {
     ContactScreen,
     ContributionSimulatorScreen,
     ImportantAnnouncementScreen,
-    BenefitScreen
+    BenefitScreen,
+    PaymentForecastScreen
 }
