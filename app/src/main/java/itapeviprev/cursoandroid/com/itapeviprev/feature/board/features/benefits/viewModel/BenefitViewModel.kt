@@ -12,18 +12,21 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import itapeviprev.cursoandroid.com.itapeviprev.R
+import itapeviprev.cursoandroid.com.itapeviprev.feature.board.features.benefits.utils.BenefitType
+import itapeviprev.cursoandroid.com.itapeviprev.feature.board.navigation.BoardNavigationScreens
+import itapeviprev.cursoandroid.com.itapeviprev.widgets.GenericCardItem
 import javax.inject.Inject
 
 @HiltViewModel
-class BenefitViewModel @Inject constructor(): ViewModel() {
+class BenefitViewModel @Inject constructor() : ViewModel() {
     val showText = mutableStateOf(false)
 
     fun getHideShowButtonTextId(): Int {
-        return if(showText.value) R.string.close_text else R.string.open_entire_text
+        return if (showText.value) R.string.close_text else R.string.open_entire_text
     }
 
     fun getHideShowButtonIcon(): ImageVector {
-        return if(showText.value) Icons.Default.KeyboardArrowUp else Icons.Default.KeyboardArrowDown
+        return if (showText.value) Icons.Default.KeyboardArrowUp else Icons.Default.KeyboardArrowDown
     }
 
     fun dialPhoneNumber(context: Context, phoneNumber: String) {

@@ -17,14 +17,18 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import itapeviprev.cursoandroid.com.itapeviprev.R
-import itapeviprev.cursoandroid.com.itapeviprev.feature.board.features.benefits.widgets.BenefitsItem
+import itapeviprev.cursoandroid.com.itapeviprev.feature.board.features.benefits.viewModel.BenefitsListViewModel
 import itapeviprev.cursoandroid.com.itapeviprev.widgets.GenericActionCard
 import itapeviprev.cursoandroid.com.itapeviprev.widgets.HeaderWithOneIcon
 
 @Composable
-fun BenefitsListScreen(navController: NavHostController) {
+fun BenefitsListScreen(
+    navController: NavHostController,
+    viewModel: BenefitsListViewModel = hiltViewModel()
+) {
     Surface(
         modifier = Modifier
             .fillMaxSize()
@@ -51,11 +55,11 @@ fun BenefitsListScreen(navController: NavHostController) {
                     style = MaterialTheme.typography.labelLarge,
                     fontWeight = FontWeight.Bold
                 )
-                BenefitsItem().getBenefitsList().forEach { item ->
+                viewModel.getBenefitsList().forEach { item ->
                     GenericActionCard(item.titleId, item.imageResId) {
                         navController.navigate(item.route)
                     }
-                    if (item != BenefitsItem().getBenefitsList().last()) {
+                    if (item != viewModel.getBenefitsList().last()) {
                         Spacer(modifier = Modifier.size(16.dp))
                     }
                 }
