@@ -46,6 +46,7 @@ val Typography = Typography(
         fontSize = 12.sp,
         lineHeight = 24.sp,
         letterSpacing = 0.5.sp,
+        color = PrimaryBlack
     ),
     labelMedium = TextStyle(
         fontFamily = monteserratFamily,

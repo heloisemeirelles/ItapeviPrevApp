@@ -55,3 +55,9 @@ fun GenericActionCard(titleId: Int, imageResId: Int, onClickAction: () -> Unit) 
         }
     }
 }
+
+data class GenericCardItem(
+    val titleId: Int = 0,
+    val imageResId: Int = 0,
+    val route: String = "",
+)

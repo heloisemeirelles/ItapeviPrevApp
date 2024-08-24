@@ -168,4 +168,21 @@
     <string name="document_relation_title_2">Requerimento para pensão</string>
     <string name="document_relation_text_2">  •   Certidão de óbito (cópia autenticada)\n  •   Certidão de casamento (atualizada e autenticada)\n  •   RG (do ex-servidor e do requerente)\n  •   CPF (do ex-servidor e do requerente)\n  •   PIS/PASEP (do ex-servidor)\n  •   Carteira(s) de trabalho (do ex-servidor)\n  •   Certidão de nascimento do(s) filho(s) até 21 anos de idade\n  •   Atestado médico (Filho portador de deficiência)\n  •   Comprovante de endereço com CEP (recente)\n  •   Documento que comprove recebimento ou solicitação de pensão em outro instituto de previdência.
     </string>
+
+    <!-- Payment Info -->
+    <string name="payment_infos">Informações de pagamento</string>
+    <string name="online_pay_stub">Holerite Online</string>
+    <string name="payment_forecast_for_ITAPEVIPREV_recipients">Previsão de pagamento dos beneficiários do ITAPEVIPREV</string>
+    <string name="pay_stub_url">http://rhweb.itapeviprev.com.br/RHWEB/</string>
+
+    <!-- Payment Forecast -->
+    <string name="follow_payment_forecast">Acompanhe a previsão de pagamento organizada por trimestre.</string>
+    <string name="law_art_93">LC 92-2017 .Art. 93</string>
+    <string name="beneficiaries_are_paid_monthly">Os beneficiários são pagos em prestações mensais e consecutivas até o décimo dia do mês subsequente ao da ocorrência do respectivo fato gerador.</string>
+    <string name="january_to_march">Janeiro a Março</string>
+    <string name="april_to_june">Abril a Junho</string>
+    <string name="july_to_september">Julho a Setembro</string>
+    <string name="october_to_december">Outubro a Dezembro</string>
+    <string name="payment_status">Status de pagamento</string>
+    <string name="payment_date">Data de pagamento</string>
 </resources>

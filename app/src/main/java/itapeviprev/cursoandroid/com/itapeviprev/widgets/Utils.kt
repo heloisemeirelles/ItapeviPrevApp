@@ -1,9 +1,14 @@
 package itapeviprev.cursoandroid.com.itapeviprev.widgets
 
-import android.util.Log
+
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.input.OffsetMapping
 import androidx.compose.ui.text.input.TransformedText
+import com.google.accompanist.web.WebView
+import com.google.accompanist.web.rememberWebViewState
 import java.text.DecimalFormat
 
 fun emailIsValid(email: String): Boolean {
@@ -45,4 +50,15 @@ fun creditCardFilter(text: AnnotatedString): TransformedText {
 
 fun decimalFormat(value: Double): String {
     return DecimalFormat("0.00").format(value)
+}
+
+@Composable
+fun GenericWebView(url: String) {
+
+    val webViewState = rememberWebViewState(url = url)
+
+    WebView(
+        state = webViewState,
+        modifier = Modifier.fillMaxSize()
+    )
 }
