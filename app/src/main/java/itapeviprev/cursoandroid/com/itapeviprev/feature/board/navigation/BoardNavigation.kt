@@ -13,7 +13,7 @@ import itapeviprev.cursoandroid.com.itapeviprev.feature.board.features.benefits.
 import itapeviprev.cursoandroid.com.itapeviprev.feature.board.features.contact.ContactScreen
 import itapeviprev.cursoandroid.com.itapeviprev.feature.board.features.councilScreen.CouncilScreen
 import itapeviprev.cursoandroid.com.itapeviprev.feature.board.features.fundHealthScreen.FundHealthScreen
-import itapeviprev.cursoandroid.com.itapeviprev.feature.board.features.fundScreen.FundScreen
+import itapeviprev.cursoandroid.com.itapeviprev.feature.board.features.fund.FundScreen
 import itapeviprev.cursoandroid.com.itapeviprev.feature.board.features.paymentInfo.PaymentsInfoScreen
 import itapeviprev.cursoandroid.com.itapeviprev.feature.board.features.pdfLcl.PdfLclScreen
 import itapeviprev.cursoandroid.com.itapeviprev.feature.board.features.processInfoScreen.ProcessInfoScreen

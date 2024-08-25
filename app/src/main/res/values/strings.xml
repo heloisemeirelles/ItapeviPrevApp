@@ -185,4 +185,34 @@
     <string name="october_to_december">Outubro a Dezembro</string>
     <string name="payment_status">Status de pagamento</string>
     <string name="payment_date">Data de pagamento</string>
+
+    <!-- The fund -->
+    <string name="about_the_itapeviprev">Sobre o ITAPEVIPREVI</string>
+    <string name="creation_and_legislation">Criação e Legislação</string>
+    <string name="year_of_creation">Ano de criação</string>
+    <string name="december_2022">Dezembro de 2022</string>
+    <string name="current_legislation">Legislação atual</string>
+    <string name="complementary_law">Lei Complementar nº 92 de 22 de setembro de 2017</string>
+    <string name="objective">Objetivo</string>
+    <string name="purpose">Finalidade</string>
+    <string name="purpose_text">Assegurar a concessão, o pagamento e a manutenção de benefícios de natureza previdenciária.</string>
+    <string name="holders_of_elected_positions">Titulares de cargos efetivos ativos, inativos e pensionistas.</string>
+    <string name="organizational_structure">Estrutura Organizacional</string>
+    <string name="administration_council">Conselho de administração</string>
+    <string name="seven_members">7 membros titulares</string>
+    <string name="three_members">3 membros titulares</string>
+    <string name="fiscal_council">Conselho fiscal</string>
+    <string name="investment_council">Conselho de investimentos</string>
+    <string name="location_and_contact">Localização e contato</string>
+    <string name="opening_hours">Horário de funcionamento</string>
+    <string name="monday_to_friday">Segunda a sexta-feira: 08:00h às 16:00h</string>
+    <string name="address">Endereço</string>
+    <string name="itapevi_prev_address">Rua Geraldo Vasques nº 112, Jardim Nova Itapevi, Itapevi - SP</string>
+    <string name="itapevi_prev_email">atendimento@itapeviprev.com.br</string>
+    <string name="site">Site</string>
+    <string name="itapevi_prev_url">https://itapeviprev.com.br/</string>
+    <string name="google_maps_url">http://maps.google.com/maps?&amp;daddr=ITAPEVIPREV</string>
+    <string name="google_maps_package">com.google.android.apps.maps</string>
+    <string name="google_maps_class_name">com.google.android.maps.MapsActivity</string>
+    <string name="make_sure_maps_is_installed">Verifique se o Google Maps está instalado em seu dispositivo</string>
 </resources>
