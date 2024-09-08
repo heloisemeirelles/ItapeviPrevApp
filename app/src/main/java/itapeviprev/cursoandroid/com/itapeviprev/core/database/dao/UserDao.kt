@@ -13,11 +13,15 @@ interface UserDao {
     fun getAll(): List<UserEntity>
 
     @Query("SELECT * FROM user_table WHERE email IN (:email)")
-    fun findByEmail(email: String): UserEntity
+    fun findByEmail(email: String): UserEntity?
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun addUser(user: UserEntity)
 
     @Query("DELETE FROM user_table WHERE email IN (:email)")
     fun deleteUserByEmail(email: String)
+
+    @Query("UPDATE user_table SET dateOfBirth = :dateOfBirth, fullName = :fullName  WHERE email = :email")
+    fun updateSelectedFundName(dateOfBirth: String, fullName: String, email: String)
+
 }

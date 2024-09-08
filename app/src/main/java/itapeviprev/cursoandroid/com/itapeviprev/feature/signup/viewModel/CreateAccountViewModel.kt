@@ -144,7 +144,7 @@ class CreateAccountViewModel @Inject constructor(
 
     private fun saveUserCredential() {
         viewModelScope.launch {
-            dataStoreManager.saveUserCredential(email.value)
+            dataStoreManager.rememberUser(true)
         }
     }
 

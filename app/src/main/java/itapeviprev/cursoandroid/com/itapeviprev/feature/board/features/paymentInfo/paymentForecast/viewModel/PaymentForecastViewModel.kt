@@ -18,6 +18,7 @@ import itapeviprev.cursoandroid.com.itapeviprev.Months.JUNE
 import itapeviprev.cursoandroid.com.itapeviprev.Months.MARCH
 import itapeviprev.cursoandroid.com.itapeviprev.Months.MAY
 import itapeviprev.cursoandroid.com.itapeviprev.Months.SEPTEMBER
+import itapeviprev.cursoandroid.com.itapeviprev.common.Errors
 import itapeviprev.cursoandroid.com.itapeviprev.feature.board.features.paymentInfo.paymentForecast.utils.PaymentForecastState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -45,12 +46,17 @@ class PaymentForecastViewModel @Inject constructor(
         mutableListOf<FirebasePaymentModel?>()
     )
 
+    fun refreshState() {
+        _paymentForecastState.value = PaymentForecastState.Initial
+    }
 
     fun fetchPaymentData() {
-        _paymentForecastState.value = PaymentForecastState.Loading
 
         val listener = object : ValueEventListener {
+
             override fun onDataChange(dataSnapshot: DataSnapshot) {
+                _paymentForecastState.value = PaymentForecastState.Loading
+                Log.v("mytag", "1")
                 dataSnapshot.children.forEach { snapshot ->
                     val payment = snapshot.getValue(FirebasePaymentModel::class.java)
 
@@ -72,14 +78,22 @@ class PaymentForecastViewModel @Inject constructor(
                         }
                     }
                 }
+                Log.v("mytag", "2")
+
                 _paymentForecastState.value = PaymentForecastState.Complete
             }
 
             override fun onCancelled(databaseError: DatabaseError) {
+                Log.v("mytag", "3")
                 _paymentForecastState.value = PaymentForecastState.Error(databaseError.message)
             }
         }
 
+        if (_paymentForecastState.value != PaymentForecastState.Complete &&
+            _paymentForecastState.value != PaymentForecastState.Loading
+        ) {
+            _paymentForecastState.value = PaymentForecastState.Error(Errors.UnexpectedError.name)
+        }
         databaseReference.addListenerForSingleValueEvent(listener)
     }
 }

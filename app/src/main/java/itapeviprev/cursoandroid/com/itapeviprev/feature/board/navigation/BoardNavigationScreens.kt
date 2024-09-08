@@ -3,6 +3,7 @@ package itapeviprev.cursoandroid.com.itapeviprev.feature.board.navigation
 enum class BoardNavigationScreens {
     BoardRoute,
     BoardScreen,
+    ProfileScreen,
     BenefitsListScreen,
     PdfLclScreen,
     PaymentsInfoScreen,
@@ -14,5 +15,6 @@ enum class BoardNavigationScreens {
     ContributionSimulatorScreen,
     ImportantAnnouncementScreen,
     BenefitScreen,
-    PaymentForecastScreen
+    PaymentForecastScreen,
+    FundHelperScreen
 }

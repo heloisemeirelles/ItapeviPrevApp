@@ -6,4 +6,16 @@ interface ItapeviPrevRepository {
     suspend fun saveUserInfo(userEntity: UserEntity)
 
     suspend fun getAllUsers(): List<UserEntity>
+
+    suspend fun getUserByEmail(email: String): UserEntity?
+
+    suspend fun updateUserInfo(
+        dateOfBirth: String,
+        fullName: String,
+        email: String
+    )
+
+    suspend fun addUser(
+        userEntity: UserEntity
+    )
 }

@@ -2,6 +2,7 @@ package itapeviprev.cursoandroid.com.itapeviprev.feature.board.features.fund
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -43,6 +44,7 @@ import itapeviprev.cursoandroid.com.itapeviprev.feature.board.features.fund.view
 import itapeviprev.cursoandroid.com.itapeviprev.feature.board.features.fund.widgets.ContactCard
 import itapeviprev.cursoandroid.com.itapeviprev.feature.board.features.fund.widgets.FundInfoCard
 import itapeviprev.cursoandroid.com.itapeviprev.feature.board.features.fund.widgets.OpeningHoursCard
+import itapeviprev.cursoandroid.com.itapeviprev.feature.board.navigation.BoardNavigationScreens
 import itapeviprev.cursoandroid.com.itapeviprev.theme.PrimaryBlue
 import itapeviprev.cursoandroid.com.itapeviprev.theme.PrimaryGray
 
@@ -69,6 +71,9 @@ fun FundScreen(navController: NavController,
                         .background(
                             PrimaryBlue, shape = CircleShape
                         )
+                        .clickable {
+                            navController.navigate(BoardNavigationScreens.FundHelperScreen.name)
+                        }
                         .padding(8.dp)) {
                         Image(painter = painterResource(id = R.drawable.ic_helper), contentDescription = "")
                     }
@@ -104,10 +109,10 @@ private fun Header(onClick: () -> Unit) {
         modifier = Modifier
             .fillMaxWidth()
             .background(PrimaryBlue)
-            .height(180.dp)
+            .height(160.dp)
     ) {
         Column(modifier = Modifier.fillMaxSize()) {
-            IconButton(modifier = Modifier.padding(40.dp), onClick = { onClick() }) {
+            IconButton(modifier = Modifier.padding(24.dp), onClick = { onClick() }) {
                 Icon(
                     imageVector = Icons.AutoMirrored.Filled.ArrowBack,
                     contentDescription = "",

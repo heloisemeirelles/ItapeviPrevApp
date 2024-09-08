@@ -27,6 +27,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import itapeviprev.cursoandroid.com.itapeviprev.R
@@ -42,6 +43,7 @@ fun RoundedButton(
     borderColor: Color = Color.Transparent,
     isLoading: Boolean = false,
     enabled: Boolean = true,
+    fontWeight: FontWeight = FontWeight.SemiBold,
     onClick: () -> Unit,
 
     ) {
@@ -76,16 +78,22 @@ fun RoundedButton(
                 Spacer(modifier = Modifier.size(12.dp))
                 Text(
                     text = stringResource(id = R.string.loading),
-                    style = MaterialTheme.typography.labelMedium,
-                    color = Color.White
+                    style = MaterialTheme.typography.bodyLarge,
+                    fontWeight = fontWeight,
+                    color = labelColor,
+                    textAlign = TextAlign.Center
                 )
             }
 
         } else {
             Text(
                 text = label,
-                style = MaterialTheme.typography.labelMedium,
-                modifier = Modifier.padding(8.dp)
+                style = MaterialTheme.typography.bodyLarge,
+                fontWeight = fontWeight,
+                color = labelColor,
+                modifier = Modifier.padding(8.dp),
+                textAlign = TextAlign.Center
+
             )
         }
     }

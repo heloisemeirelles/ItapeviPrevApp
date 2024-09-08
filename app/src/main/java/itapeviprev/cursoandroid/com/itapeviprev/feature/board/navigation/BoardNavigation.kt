@@ -14,9 +14,11 @@ import itapeviprev.cursoandroid.com.itapeviprev.feature.board.features.contact.C
 import itapeviprev.cursoandroid.com.itapeviprev.feature.board.features.councilScreen.CouncilScreen
 import itapeviprev.cursoandroid.com.itapeviprev.feature.board.features.fundHealthScreen.FundHealthScreen
 import itapeviprev.cursoandroid.com.itapeviprev.feature.board.features.fund.FundScreen
+import itapeviprev.cursoandroid.com.itapeviprev.feature.board.features.fund.fundHelper.FundHelperScreen
 import itapeviprev.cursoandroid.com.itapeviprev.feature.board.features.paymentInfo.PaymentsInfoScreen
 import itapeviprev.cursoandroid.com.itapeviprev.feature.board.features.pdfLcl.PdfLclScreen
 import itapeviprev.cursoandroid.com.itapeviprev.feature.board.features.processInfoScreen.ProcessInfoScreen
+import itapeviprev.cursoandroid.com.itapeviprev.feature.board.features.profile.ProfileScreen
 
 fun NavGraphBuilder.boardNavigation(navController: NavHostController) {
     navigation(
@@ -44,7 +46,7 @@ fun NavGraphBuilder.boardNavigation(navController: NavHostController) {
         }
 
         composable(route = BoardNavigationScreens.FundScreen.name) {
-            FundScreen()
+            FundScreen(navController)
         }
 
         composable(route = BoardNavigationScreens.ProcessInfoScreen.name) {
@@ -74,6 +76,14 @@ fun NavGraphBuilder.boardNavigation(navController: NavHostController) {
 
         composable(route = BoardNavigationScreens.PaymentForecastScreen.name) {
             PaymentForecastScreen(navController = navController)
+        }
+
+        composable(route = BoardNavigationScreens.FundHelperScreen.name) {
+            FundHelperScreen(navController)
+        }
+
+        composable(route = BoardNavigationScreens.ProfileScreen.name) {
+            ProfileScreen(navController)
         }
     }
 }

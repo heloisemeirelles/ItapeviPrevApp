@@ -41,10 +41,12 @@ import itapeviprev.cursoandroid.com.itapeviprev.feature.board.navigation.BoardNa
 import itapeviprev.cursoandroid.com.itapeviprev.feature.login.viewModel.LoginViewModel
 import itapeviprev.cursoandroid.com.itapeviprev.navigation.AppNavigationScreens
 import itapeviprev.cursoandroid.com.itapeviprev.theme.PrimaryBlue
+import itapeviprev.cursoandroid.com.itapeviprev.widgets.ErrorDialog
 import itapeviprev.cursoandroid.com.itapeviprev.widgets.HeaderWithOneIcon
 import itapeviprev.cursoandroid.com.itapeviprev.widgets.PasswordTextField
 import itapeviprev.cursoandroid.com.itapeviprev.widgets.RoundedButton
 import itapeviprev.cursoandroid.com.itapeviprev.widgets.RoundedTextField
+import kotlin.system.exitProcess
 
 @Composable
 fun LoginScreen(
@@ -54,6 +56,7 @@ fun LoginScreen(
     val showPassword = remember { mutableStateOf(false) }
     val loginState by viewModel.loginState.collectAsState()
     val isLoading = remember { mutableStateOf(false) }
+    val showErrorDialog = remember { mutableStateOf(false) }
 
     when (loginState) {
         is LoginState.Loading -> {
@@ -67,20 +70,15 @@ fun LoginScreen(
 
         is LoginState.Error -> {
             isLoading.value = false
-        }
-
-        is LoginState.InvalidEmail -> {
-            isLoading.value = false
-        }
-
-        is LoginState.InvalidPassword -> {
-            isLoading.value = false
+            showErrorDialog.value = true
         }
 
         else -> {
             isLoading.value = false
+
         }
     }
+
     Surface(
         modifier = Modifier
             .fillMaxSize()
@@ -166,6 +164,15 @@ fun LoginScreen(
                 }
             }
 
+            if(showErrorDialog.value) {
+                ErrorDialog(onDismissClick = { showErrorDialog.value = false },
+                    onTryAgain = {
+                        showErrorDialog.value = false
+                        viewModel.login()
+                    }) {
+                    exitProcess(0)
+                }
+            }
 
         }
     }

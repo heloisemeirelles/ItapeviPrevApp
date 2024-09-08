@@ -1,6 +1,8 @@
 package itapeviprev.cursoandroid.com.itapeviprev.widgets
 
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -10,13 +12,15 @@ import androidx.compose.ui.text.input.TransformedText
 import com.google.accompanist.web.WebView
 import com.google.accompanist.web.rememberWebViewState
 import java.text.DecimalFormat
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 
 fun emailIsValid(email: String): Boolean {
     val emailRegex = Regex("^[\\w-.+]+@([\\w-]+\\.)+[\\w-]{2,4}\$")
     return email.matches(emailRegex)
 }
 
-fun creditCardFilter(text: AnnotatedString): TransformedText {
+fun formatDateInput(text: AnnotatedString): TransformedText {
 
     val trimmed = if (text.text.length >= 8) text.text.substring(0..7) else text.text
     var out = ""
@@ -61,4 +65,19 @@ fun GenericWebView(url: String) {
         state = webViewState,
         modifier = Modifier.fillMaxSize()
     )
+}
+
+@RequiresApi(Build.VERSION_CODES.O)
+fun formatDateString(date: String): String {
+    return if(date.length == 8) {
+        val inputFormatter = DateTimeFormatter.ofPattern("ddMMyyyy")
+        val outputFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy")
+
+        val formattedDate = LocalDate.parse(date, inputFormatter)
+
+        formattedDate.format(outputFormatter)
+    } else {
+        date
+    }
+
 }

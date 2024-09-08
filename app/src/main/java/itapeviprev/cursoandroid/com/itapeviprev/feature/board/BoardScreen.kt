@@ -13,8 +13,10 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import itapeviprev.cursoandroid.com.itapeviprev.R
+import itapeviprev.cursoandroid.com.itapeviprev.feature.board.navigation.BoardNavigationScreens
 import itapeviprev.cursoandroid.com.itapeviprev.feature.board.viewModel.BoardViewModel
 import itapeviprev.cursoandroid.com.itapeviprev.feature.board.widgets.CardGrid
+import itapeviprev.cursoandroid.com.itapeviprev.widgets.HeaderWithOneIcon
 import itapeviprev.cursoandroid.com.itapeviprev.widgets.HeaderWithTwoIcons
 
 @Composable
@@ -29,14 +31,16 @@ fun BoardScreen(
         ) {
             Box(
                 modifier = Modifier
-                    .padding(24.dp)
+                    .padding(16.dp)
             ) {
-                HeaderWithTwoIcons(
-                    arrangement = Arrangement.SpaceBetween,
-                    firstIconClick = {},
-                    secondIconClick = {},
-                    secondIcon = painterResource(id = R.drawable.ic_profile)
-                )
+                if (viewModel.userIsLoggedIn.value) {
+                    HeaderWithOneIcon(
+                        icon = painterResource(id = R.drawable.ic_profile),
+                        arrangement = Arrangement.End
+                    ) {
+                        navController.navigate(BoardNavigationScreens.ProfileScreen.name)
+                    }
+                }
             }
 
             Column(

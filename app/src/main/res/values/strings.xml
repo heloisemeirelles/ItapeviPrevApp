@@ -24,6 +24,9 @@
     <string name="loading">Carregando...</string>
     <string name="title_core">core</string>
     <string name="coming_soon">Em breve</string>
+    <string name="something_went_wrong">Algo deu errado! Lamentamos o ocorrido.</string>
+    <string name="try_again">Tentar novamente</string>
+    <string name="close_app">Fechar aplicativo</string>
 
     <!-- Create Account -->
     <string name="full_name">Nome Completo</string>
@@ -215,4 +218,22 @@
     <string name="google_maps_package">com.google.android.apps.maps</string>
     <string name="google_maps_class_name">com.google.android.maps.MapsActivity</string>
     <string name="make_sure_maps_is_installed">Verifique se o Google Maps está instalado em seu dispositivo</string>
+
+    <!-- Fund Helper -->
+    <string name="worth_to_know">Vale a pena saber</string>
+    <string name="whats_the_regime">O que é o Regime Próprio de Previdência Social - RPPS?</string>
+    <string name="regime_text">A Constituição Federal de 1988 estabeleceu dois sistemas pelos quais as pessoas podem receber benefícios de previdência social (aposentadoria, pensão, etc.).\n\nUm deles é o Regime Geral de Previdência Social – RGPS, que atualmente é mantido pelo Instituto Nacional de Seguridade Social – INSS. O RGPS é destinado aos empregados das empresas, aos empregados domésticos, aos autônomos, aos empresários e também aos servidores públicos ocupantes exclusivamente de cargo em comissão e aos eleitos, entre outros.\n\nO outro, é o Regime Próprio de Previdência Social – RPPS, destinado aos servidores públicos titulares de cargo de provimento efetivo, no regime estatutário.\nO RPPS de Itapevi teve a sua legislação atualizada pela recente Lei Complementar nº 092/2017.</string>
+    <string name="contribution_for_itapeviprev">Contribuições para o ITAPEVIPREVI</string>
+    <string name="contribution_for_itapeviprev_text">A partir da Emenda 20 a previdência no serviço público passou a ter caráter contributivo, e a partir da Emenda 41 a contribuição mínima do servidor é de 11%.\n\nA sua contribuição previdenciária, descontada de sua remuneração, é repassada ao ITAPEVIPREV pela Prefeitura, pelas suas autarquias e fundações e pela Câmara Municipal, para custear o pagamento dos benefícios previdenciários.</string>
+
+    <!-- Profile -->
+    <string name="name">Nome</string>
+    <string name="update_your_personal_data">Atualize seus dados cadastrais</string>
+    <string name="update_now">Atualizar agora</string>
+    <string name="update_later">Atualizar depois</string>
+    <string name="leave_the_app">Sair do aplicativo</string>
+    <string name="save_my_data">Salvar meus dados</string>
+    <string name="edit_my_data">Editar meus dados</string>
+    <string name="invalid_date">Data inválida.</string>
+
 </resources>

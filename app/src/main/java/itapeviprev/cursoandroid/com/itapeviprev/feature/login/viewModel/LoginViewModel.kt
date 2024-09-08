@@ -27,7 +27,7 @@ import javax.inject.Inject
 @HiltViewModel
 class LoginViewModel @Inject constructor(
     private val dataStoreManager: DataStoreManager
-): ViewModel() {
+) : ViewModel() {
     val email = mutableStateOf("")
     private val emailIsInvalid = mutableStateOf(false)
     private val passwordIsInvalid = mutableStateOf(false)
@@ -43,7 +43,7 @@ class LoginViewModel @Inject constructor(
     val loginState: StateFlow<LoginState> = _loginState
 
     fun fieldBorderColor(hasError: Boolean, isFocused: Boolean): Color {
-        return if(hasError) {
+        return if (hasError) {
             PrimaryRed
         } else {
             PrimaryGray
@@ -51,7 +51,7 @@ class LoginViewModel @Inject constructor(
     }
 
     fun fieldBackgroundColor(hasError: Boolean): Color {
-        if(!hasError) {
+        if (!hasError) {
             return PrimaryLightGrayTransparent
         } else {
             return PrimaryLightRed
@@ -61,10 +61,11 @@ class LoginViewModel @Inject constructor(
     fun login() {
         resetErrors()
         _loginState.value = LoginState.Loading
+
         firebaseAuth.signInWithEmailAndPassword(email.value, password.value)
-            .addOnCompleteListener {task ->
-                if(task.isSuccessful) {
-                    if(rememberMe.value) saveUserCredential()
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    saveUserCredential()
                     _loginState.value = LoginState.Completed
                 } else {
                     setValidationError(task.exception)
@@ -79,7 +80,7 @@ class LoginViewModel @Inject constructor(
 
     private fun saveUserCredential() {
         viewModelScope.launch {
-            dataStoreManager.saveUserCredential(email.value)
+            dataStoreManager.rememberUser(rememberMe.value)
         }
     }
 
@@ -100,10 +101,11 @@ class LoginViewModel @Inject constructor(
 
 
     private fun setValidationError(exception: Exception?) {
-        when(exception) {
+        when (exception) {
             is FirebaseAuthInvalidCredentialsException -> {
                 passwordIsInvalid.value = true
             }
+
             is FirebaseAuthInvalidUserException -> {
                 emailIsInvalid.value = originalEmail.value == email.value
             }

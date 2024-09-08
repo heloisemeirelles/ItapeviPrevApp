@@ -28,22 +28,17 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import itapeviprev.cursoandroid.com.itapeviprev.R
 import itapeviprev.cursoandroid.com.itapeviprev.feature.board.navigation.BoardNavigationScreens
-import itapeviprev.cursoandroid.com.itapeviprev.feature.signup.ui.widgets.CardInfo
 import itapeviprev.cursoandroid.com.itapeviprev.feature.signup.ui.widgets.IdentificationCardsList
 import itapeviprev.cursoandroid.com.itapeviprev.feature.signup.ui.widgets.listOfIdentification
 import itapeviprev.cursoandroid.com.itapeviprev.feature.signup.viewModel.CreateAccountViewModel
-import itapeviprev.cursoandroid.com.itapeviprev.feature.signup.viewModel.CreateAccountViewModel.Companion.OTHER
-import itapeviprev.cursoandroid.com.itapeviprev.feature.signup.viewModel.CreateAccountViewModel.Companion.PENSIONER
-import itapeviprev.cursoandroid.com.itapeviprev.feature.signup.viewModel.CreateAccountViewModel.Companion.RETIREE
-import itapeviprev.cursoandroid.com.itapeviprev.navigation.AppNavigationScreens
 import itapeviprev.cursoandroid.com.itapeviprev.theme.PrimaryBlue
-import itapeviprev.cursoandroid.com.itapeviprev.theme.PrimaryGray
-import itapeviprev.cursoandroid.com.itapeviprev.theme.PrimaryLightGrayTransparent
+import itapeviprev.cursoandroid.com.itapeviprev.widgets.ErrorDialog
 import itapeviprev.cursoandroid.com.itapeviprev.widgets.HeaderWithBackButtonAndLogo
 import itapeviprev.cursoandroid.com.itapeviprev.widgets.PasswordTextField
 import itapeviprev.cursoandroid.com.itapeviprev.widgets.RoundedButton
 import itapeviprev.cursoandroid.com.itapeviprev.widgets.RoundedTextField
-import itapeviprev.cursoandroid.com.itapeviprev.widgets.creditCardFilter
+import itapeviprev.cursoandroid.com.itapeviprev.widgets.formatDateInput
+import kotlin.system.exitProcess
 
 @Composable
 fun CreateAccountScreen(
@@ -58,6 +53,7 @@ fun CreateAccountScreen(
     val showPassword = remember { mutableStateOf(false) }
     val confirmPasswordHasFocus = remember { mutableStateOf(false) }
     val showConfirmPassword = remember { mutableStateOf(false) }
+    val showErrorDialog = remember { mutableStateOf(false) }
 
     val signUpState by viewModel.signUpState.collectAsState()
 
@@ -68,6 +64,10 @@ fun CreateAccountScreen(
 
         is SignUpState.Loading -> {
             isAddingUser.value = true
+        }
+
+        is SignUpState.Error -> {
+            showErrorDialog.value = true
         }
 
         else -> {
@@ -127,6 +127,16 @@ fun CreateAccountScreen(
                 enabled = viewModel.isButtonEnabled()
             ) {
                 viewModel.createAccount()
+            }
+
+            if(showErrorDialog.value) {
+                ErrorDialog(onDismissClick = { showErrorDialog.value = false },
+                    onTryAgain = {
+                        showErrorDialog.value = false
+                        viewModel.createAccount()
+                    }) {
+                    exitProcess(0)
+                }
             }
         }
     }
@@ -192,7 +202,7 @@ private fun DateOfBirthField(
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
         maxLength = 8,
         visualTransformation = {
-            creditCardFilter(AnnotatedString(dateOfBirth.value))
+            formatDateInput(AnnotatedString(dateOfBirth.value))
         }
     )
     Spacer(modifier = Modifier.size(16.dp))
@@ -248,30 +258,6 @@ private fun EmailTextField(
         isOnFocus = emailHasFocus
     )
 
-    Spacer(modifier = Modifier.size(16.dp))
-}
-
-@Composable
-fun TextComponent(
-    label: String,
-    text: MutableState<String>,
-    placeHolder: String,
-    leadingIconId: Int,
-    isOnFocus: MutableState<Boolean>,
-    keyboardType: KeyboardType = KeyboardType.Text
-) {
-    Text(
-        text = label,
-        style = MaterialTheme.typography.bodyMedium
-    )
-    Spacer(modifier = Modifier.size(8.dp))
-    RoundedTextField(
-        text = text,
-        placeholder = placeHolder,
-        leadingIconId = leadingIconId,
-        isOnFocus = isOnFocus,
-        keyboardOptions = KeyboardOptions(keyboardType = keyboardType)
-    )
     Spacer(modifier = Modifier.size(16.dp))
 }
 

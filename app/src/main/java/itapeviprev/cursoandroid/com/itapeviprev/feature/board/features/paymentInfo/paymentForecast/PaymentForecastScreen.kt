@@ -1,5 +1,6 @@
 package itapeviprev.cursoandroid.com.itapeviprev
 
+import android.util.Log
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -14,6 +15,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -25,14 +28,16 @@ import itapeviprev.cursoandroid.com.itapeviprev.feature.board.features.paymentIn
 import itapeviprev.cursoandroid.com.itapeviprev.feature.board.features.paymentInfo.paymentForecast.utils.PaymentForecastCardSlider
 import itapeviprev.cursoandroid.com.itapeviprev.feature.board.features.paymentInfo.paymentForecast.utils.PaymentForecastState
 import itapeviprev.cursoandroid.com.itapeviprev.theme.PrimaryBlue
+import itapeviprev.cursoandroid.com.itapeviprev.widgets.ErrorDialog
 import itapeviprev.cursoandroid.com.itapeviprev.widgets.HeaderWithImageAndIcon
+import kotlin.system.exitProcess
 
 @Composable
 fun PaymentForecastScreen(
     viewModel: PaymentForecastViewModel = hiltViewModel(),
     navController: NavHostController
 ) {
-
+    val showErrorDialog = remember { mutableStateOf(false) }
     val paymentForecastState by viewModel.paymentForecastState.collectAsState(initial = true)
 
     Surface(modifier = Modifier.fillMaxSize()) {
@@ -71,6 +76,23 @@ fun PaymentForecastScreen(
                         LawInformative()
                         Spacer(modifier = Modifier.size(24.dp))
                         PaymentForecastCardSlider(viewModel.paymentList)
+                    }
+
+                    is PaymentForecastState.Error -> {
+                        showErrorDialog.value = true
+                    }
+
+                }
+
+                if (showErrorDialog.value) {
+                    ErrorDialog(onDismissClick = {
+                        viewModel.refreshState()
+                        showErrorDialog.value = false },
+                        onTryAgain = {
+                            showErrorDialog.value = false
+                            viewModel.refreshState()
+                        }) {
+                        exitProcess(0)
                     }
                 }
             }
