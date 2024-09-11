@@ -97,20 +97,20 @@ fun ContributionSimulatorScreen(
                                 ) {
                                     Text(
                                         modifier = Modifier
-                                            .weight(3.5f),
+                                            .weight(4.5f),
                                         text = stringResource(id = item.salaryId),
                                         style = MaterialTheme.typography.bodySmall
                                     )
                                     Text(
                                         modifier = Modifier
-                                            .weight(3.5f),
+                                            .weight(9f),
                                         textAlign = TextAlign.Center,
                                         text = stringResource(id = item.taxRateValue),
                                         style = MaterialTheme.typography.bodySmall
                                     )
                                     Text(
                                         modifier = Modifier
-                                            .weight(3.3f),
+                                            .weight(3f),
                                         textAlign = TextAlign.Center,
                                         text = decimalFormat(item.value),
                                         style = MaterialTheme.typography.bodySmall
@@ -128,7 +128,7 @@ fun ContributionSimulatorScreen(
 
                 }
             } else {
-                ContributionSimulatorBody(viewModel.valueToSimulate, viewModel.showSimulation)
+                ContributionSimulatorBody(viewModel.valueToSimulate, viewModel.showSimulation, viewModel.isButtonEnabled())
             }
 
         }

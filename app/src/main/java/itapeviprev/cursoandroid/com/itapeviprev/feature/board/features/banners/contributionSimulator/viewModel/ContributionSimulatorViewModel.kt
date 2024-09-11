@@ -1,30 +1,30 @@
 package itapeviprev.cursoandroid.com.itapeviprev.feature.board.features.banners.contributionSimulator.viewModel
 
 import android.util.Log
+import androidx.compose.runtime.mutableDoubleStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import itapeviprev.cursoandroid.com.itapeviprev.R
 import itapeviprev.cursoandroid.com.itapeviprev.feature.board.features.banners.contributionSimulator.widgets.SimulationCardModel
 import itapeviprev.cursoandroid.com.itapeviprev.widgets.decimalFormat
-import java.text.DecimalFormat
 import javax.inject.Inject
 
 @HiltViewModel
 class ContributionSimulatorViewModel @Inject constructor() : ViewModel() {
-    val valueToSimulate = mutableStateOf("0")
-    val contributionValue = mutableStateOf(0.0)
+    val valueToSimulate = mutableStateOf("")
+    private val contributionValue = mutableDoubleStateOf(0.0)
     val showSimulation = mutableStateOf(false)
-    val effective_tax_rate = mutableStateOf("0")
-    val firstLineLeftOver = mutableStateOf<Double>(0.0)
-    val secondLineLeftOver = mutableStateOf<Double>(0.0)
-    val thirdLineLeftOver = mutableStateOf(0.0)
-    val fourthLineLeftOver = mutableStateOf(0.0)
-    val fifthLineLeftOver = mutableStateOf(0.0)
-    val sixthLineLeftOver = mutableStateOf(0.0)
-    val seventhLineLeftOver = mutableStateOf(0.0)
+    private val effectiveTaxRate = mutableStateOf("0")
+    private val firstLineLeftOver = mutableDoubleStateOf(0.0)
+    private val secondLineLeftOver = mutableDoubleStateOf(0.0)
+    private val thirdLineLeftOver = mutableDoubleStateOf(0.0)
+    private val fourthLineLeftOver = mutableDoubleStateOf(0.0)
+    private val fifthLineLeftOver = mutableDoubleStateOf(0.0)
+    private val sixthLineLeftOver = mutableDoubleStateOf(0.0)
+    private val seventhLineLeftOver = mutableDoubleStateOf(0.0)
 
-    val isFinished = mutableStateOf(false)
+    private val isFinished = mutableStateOf(false)
 
     fun getListOfTableTitle(): List<Int> {
         return arrayListOf(
@@ -49,12 +49,18 @@ class ContributionSimulatorViewModel @Inject constructor() : ViewModel() {
             SimulationCardModel(
                 titleId = R.string.effective_tax_rate_of,
                 iconId = R.drawable.ic_chart,
-                value = "${effective_tax_rate.value}%"
+                value = "${decimalFormat(getEffectiveTaxRate())}%"
             ),
         )
     }
 
+    private fun getEffectiveTaxRate(): Double {
+        return (contributionValue.doubleValue / valueToSimulate.value.replace(",", ".")
+            .toDouble()) * 100
+    }
+
     fun getListOfTableValues(): List<SimulationModel> {
+        valueToSimulate.value = valueToSimulate.value.replace(",", ".")
         return arrayListOf(
             SimulationModel(
                 salaryId = R.string.until_1045,
@@ -99,11 +105,16 @@ class ContributionSimulatorViewModel @Inject constructor() : ViewModel() {
         )
     }
 
-    fun getCalculatedValue(valuePercentage: Double): Double {
+    fun isButtonEnabled(): Boolean {
+        val regex = """^([0-9]+([.,][0-9]*)?|[.,][0-9]+)$"""
+        return valueToSimulate.value.isNotEmpty() && valueToSimulate.value.matches(regex.toRegex())
+    }
+
+    private fun getCalculatedValue(valuePercentage: Double): Double {
         when (valuePercentage) {
             SalaryRate.until1045 -> {
                 return if (valueToSimulate.value.toDouble() > 1100) {
-                    firstLineLeftOver.value = valueToSimulate.value.toDouble() - 1045
+                    firstLineLeftOver.doubleValue = valueToSimulate.value.toDouble() - 1045
                     SalaryRate.until1045
                 } else {
                     0.0
@@ -111,78 +122,78 @@ class ContributionSimulatorViewModel @Inject constructor() : ViewModel() {
             }
 
             SalaryRate.from1045to2089 -> {
-                if (firstLineLeftOver.value < 1103 && firstLineLeftOver.value != 0.0) {
-                    val finalValue = firstLineLeftOver.value * 0.09
-                    contributionValue.value = SalaryRate.until1045 + finalValue
+                if (firstLineLeftOver.doubleValue < 1103 && firstLineLeftOver.doubleValue != 0.0) {
+                    val finalValue = firstLineLeftOver.doubleValue * 0.09
+                    contributionValue.doubleValue = SalaryRate.until1045 + finalValue
                     isFinished.value = true
                     return finalValue
                 } else if (!isFinished.value) {
-                    secondLineLeftOver.value = firstLineLeftOver.value - 1103.48
+                    secondLineLeftOver.doubleValue = firstLineLeftOver.doubleValue - 1103.48
                     return SalaryRate.from1045to2089
                 }
             }
 
             SalaryRate.from2089to3134 -> {
-                if (secondLineLeftOver.value < 1101 && secondLineLeftOver.value != 0.0) {
-                    val finalValue = secondLineLeftOver.value * 0.12
-                    contributionValue.value =
+                if (secondLineLeftOver.doubleValue < 1101 && secondLineLeftOver.doubleValue != 0.0) {
+                    val finalValue = secondLineLeftOver.doubleValue * 0.12
+                    contributionValue.doubleValue =
                         SalaryRate.until1045 + SalaryRate.from1045to2089 + finalValue
                     isFinished.value = true
                     return finalValue
                 } else if (!isFinished.value) {
-                    thirdLineLeftOver.value = secondLineLeftOver.value - 1101.73
+                    thirdLineLeftOver.doubleValue = secondLineLeftOver.doubleValue - 1101.73
                     return SalaryRate.from2089to3134
                 }
             }
 
             SalaryRate.from3134to6101 -> {
-                if (thirdLineLeftOver.value < 3128 && thirdLineLeftOver.value != 0.0) {
-                    val finalValue = thirdLineLeftOver.value * 0.14
-                    contributionValue.value =
+                if (thirdLineLeftOver.doubleValue < 3128 && thirdLineLeftOver.doubleValue != 0.0) {
+                    val finalValue = thirdLineLeftOver.doubleValue * 0.14
+                    contributionValue.doubleValue =
                         SalaryRate.until1045 + SalaryRate.from1045to2089 + SalaryRate.from2089to3134 + finalValue
                     isFinished.value = true
                     return finalValue
                 } else if (!isFinished.value) {
-                    fourthLineLeftOver.value = thirdLineLeftOver.value - 3128.33
+                    fourthLineLeftOver.doubleValue = thirdLineLeftOver.doubleValue - 3128.33
                     return SalaryRate.from3134to6101
                 }
             }
 
             SalaryRate.from6101to10448 -> {
-                if (fourthLineLeftOver.value < 4583 && fourthLineLeftOver.value != 0.0) {
-                    val finalValue = fourthLineLeftOver.value * 0.145
-                    contributionValue.value =
+                if (fourthLineLeftOver.doubleValue < 4583 && fourthLineLeftOver.doubleValue != 0.0) {
+                    val finalValue = fourthLineLeftOver.doubleValue * 0.145
+                    contributionValue.doubleValue =
                         SalaryRate.until1045 + SalaryRate.from1045to2089 + SalaryRate.from2089to3134 + SalaryRate.from3134to6101 + finalValue
                     isFinished.value = true
                     return finalValue
                 } else if (!isFinished.value) {
-                    fifthLineLeftOver.value = fourthLineLeftOver.value - 4583.84
+                    fifthLineLeftOver.doubleValue = fourthLineLeftOver.doubleValue - 4583.84
                     return SalaryRate.from6101to10448
                 }
             }
 
             SalaryRate.from10448to20896 -> {
-                if (fifthLineLeftOver.value < 11017 && fifthLineLeftOver.value != 0.0) {
-                    val finalValue = fifthLineLeftOver.value * 0.165
-                    contributionValue.value =
+                if (fifthLineLeftOver.doubleValue < 11017 && fifthLineLeftOver.doubleValue != 0.0) {
+                    val finalValue = fifthLineLeftOver.doubleValue * 0.165
+                    contributionValue.doubleValue =
                         SalaryRate.until1045 + SalaryRate.from1045to2089 + SalaryRate.from2089to3134 + SalaryRate.from3134to6101 + SalaryRate.from6101to10448 + finalValue
                     isFinished.value = true
                     return finalValue
                 } else if (!isFinished.value) {
-                    sixthLineLeftOver.value = fifthLineLeftOver.value - 11017.42
+                    sixthLineLeftOver.doubleValue = fifthLineLeftOver.doubleValue - 11017.42
                     return SalaryRate.from10448to20896
                 }
             }
 
             SalaryRate.from20896to40747 -> {
-                if (sixthLineLeftOver.value < 20933 && sixthLineLeftOver.value != 0.0) {
-                    val finalValue = sixthLineLeftOver.value * 0.19
-                    contributionValue.value =
+                if (sixthLineLeftOver.doubleValue < 20933 && sixthLineLeftOver.doubleValue != 0.0) {
+                    val finalValue = sixthLineLeftOver.doubleValue * 0.19
+                    contributionValue.doubleValue =
                         SalaryRate.until1045 + SalaryRate.from1045to2089 + SalaryRate.from2089to3134 + SalaryRate.from3134to6101 + SalaryRate.from6101to10448 + SalaryRate.from10448to20896 + finalValue
                     isFinished.value = true
                     return finalValue
                 } else if (!isFinished.value) {
-                    seventhLineLeftOver.value = sixthLineLeftOver.value - 11017.42
+                    seventhLineLeftOver.doubleValue = sixthLineLeftOver.doubleValue - 11017.42
                     return SalaryRate.from20896to40747
                 }
             }

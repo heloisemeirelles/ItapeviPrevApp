@@ -51,7 +51,7 @@ import itapeviprev.cursoandroid.com.itapeviprev.widgets.RoundedButton
 import itapeviprev.cursoandroid.com.itapeviprev.widgets.RoundedTextField
 
 @Composable
-fun ContributionSimulatorBody(text: MutableState<String>, showSimulation: MutableState<Boolean>) {
+fun ContributionSimulatorBody(text: MutableState<String>, showSimulation: MutableState<Boolean>, isEnabled: Boolean) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -91,7 +91,7 @@ fun ContributionSimulatorBody(text: MutableState<String>, showSimulation: Mutabl
             Spacer(modifier = Modifier.size(32.dp))
         }
         RoundedButton(
-            backgroundColor = PrimaryBlue, labelColor = Color.White, label = stringResource(
+            enabled = isEnabled, backgroundColor = PrimaryBlue, labelColor = Color.White, label = stringResource(
                 id = R.string.simulate
             )
         ) {

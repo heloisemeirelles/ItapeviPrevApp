@@ -95,12 +95,15 @@ fun RoundedTextField(
                 )
             },
 
-            value = text.value, onValueChange = {
-                text.value = if (maxLength != 0) {
-                    it.take(maxLength)
-                } else {
-                    it
+            value = text.value, onValueChange = { newText ->
+                if (newText.all { it.isDigit() || it == '.' || it == ',' }) {
+                    text.value = if (maxLength != 0) {
+                        newText.take(maxLength)
+                    } else {
+                        newText
+                    }
                 }
+
             },
             colors = TextFieldDefaults.textFieldColors(
                 textColor = Color.Black,
