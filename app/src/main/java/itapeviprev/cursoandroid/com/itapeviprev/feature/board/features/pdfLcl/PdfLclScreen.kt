@@ -1,14 +1,11 @@
 package itapeviprev.cursoandroid.com.itapeviprev.feature.board.features.pdfLcl
 
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
+import itapeviprev.cursoandroid.com.itapeviprev.R
+import itapeviprev.cursoandroid.com.itapeviprev.widgets.WebViewScreen
 
 @Composable
 fun PdfLclScreen() {
-    Surface(modifier = Modifier.fillMaxSize()) {
-        Text(text = "PdfLclScreen")
-    }
+    WebViewScreen(url = stringResource(id = R.string.pdf_lc_url))
 }

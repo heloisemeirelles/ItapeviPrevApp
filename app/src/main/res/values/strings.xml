@@ -56,6 +56,7 @@
     <string name="contribution_simulator">Simulador de contribuição</string>
     <string name="important_announcement">Aviso importante!</string>
     <string name="access">Acessar</string>
+    <string name="pdf_lc_url">http://www.itapeviprev.com.br/app/lc92.pdf</string>
 
     <!-- Contribution Simulator -->
     <string name="insert_total_value">Insira o valor total bruto da contribuição e toque no botão %s1“Simular”%s1.</string>

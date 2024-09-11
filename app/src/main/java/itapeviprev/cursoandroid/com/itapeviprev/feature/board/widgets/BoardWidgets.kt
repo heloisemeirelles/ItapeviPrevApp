@@ -179,7 +179,6 @@ fun CardGrid(cardDataList: List<CardData>, imageSlider: List<BoardSliderData>) {
                         border = BorderStroke(1.dp, PrimaryLightGray),
                         colors = CardDefaults.cardColors(containerColor = PrimaryLightGrayTransparent)
                     ) {
-                        // Use a Box to handle vertical centering
                         Box(
                             modifier = Modifier.fillMaxSize(),
                             contentAlignment = Alignment.Center
