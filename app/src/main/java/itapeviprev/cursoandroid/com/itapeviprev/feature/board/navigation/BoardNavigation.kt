@@ -1,5 +1,7 @@
 package itapeviprev.cursoandroid.com.itapeviprev.feature.board.navigation
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
@@ -11,7 +13,9 @@ import itapeviprev.cursoandroid.com.itapeviprev.feature.board.features.banners.i
 import itapeviprev.cursoandroid.com.itapeviprev.feature.board.features.benefits.BenefitScreen
 import itapeviprev.cursoandroid.com.itapeviprev.feature.board.features.benefits.BenefitsListScreen
 import itapeviprev.cursoandroid.com.itapeviprev.feature.board.features.contact.ContactScreen
-import itapeviprev.cursoandroid.com.itapeviprev.feature.board.features.councilScreen.CouncilScreen
+import itapeviprev.cursoandroid.com.itapeviprev.feature.board.features.council.CouncilScreen
+import itapeviprev.cursoandroid.com.itapeviprev.feature.board.features.council.candidates.CandidatesScreen
+import itapeviprev.cursoandroid.com.itapeviprev.feature.board.features.council.documentsToApply.DocumentsToApplyScreen
 import itapeviprev.cursoandroid.com.itapeviprev.feature.board.features.fundHealthScreen.FundHealthScreen
 import itapeviprev.cursoandroid.com.itapeviprev.feature.board.features.fund.FundScreen
 import itapeviprev.cursoandroid.com.itapeviprev.feature.board.features.fund.fundHelper.FundHelperScreen
@@ -20,6 +24,7 @@ import itapeviprev.cursoandroid.com.itapeviprev.feature.board.features.pdfLcl.Pd
 import itapeviprev.cursoandroid.com.itapeviprev.feature.board.features.processInfoScreen.ProcessInfoScreen
 import itapeviprev.cursoandroid.com.itapeviprev.feature.board.features.profile.ProfileScreen
 
+@RequiresApi(Build.VERSION_CODES.O)
 fun NavGraphBuilder.boardNavigation(navController: NavHostController) {
     navigation(
         startDestination = BoardNavigationScreens.BoardScreen.name,
@@ -54,7 +59,7 @@ fun NavGraphBuilder.boardNavigation(navController: NavHostController) {
         }
 
         composable(route = BoardNavigationScreens.CouncilScreen.name) {
-            CouncilScreen()
+            CouncilScreen(navController)
         }
 
         composable(route = BoardNavigationScreens.ContactScreen.name) {
@@ -84,6 +89,14 @@ fun NavGraphBuilder.boardNavigation(navController: NavHostController) {
 
         composable(route = BoardNavigationScreens.ProfileScreen.name) {
             ProfileScreen(navController)
+        }
+
+        composable(route = BoardNavigationScreens.CandidatesScreen.name) {
+            CandidatesScreen(navController)
+        }
+
+        composable(route = BoardNavigationScreens.DocumentsToApplyScreen.name) {
+            DocumentsToApplyScreen(navController)
         }
     }
 }

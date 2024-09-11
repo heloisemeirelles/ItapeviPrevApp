@@ -236,4 +236,43 @@
     <string name="edit_my_data">Editar meus dados</string>
     <string name="invalid_date">Data inválida.</string>
 
+    <!-- Council -->
+    <string name="get_to_know_the_candidates">Conheça os candidatos para o conselho fiscal e administrativo.</string>
+    <string name="candidates">Candidatos</string>
+    <string name="other_actions">Outras ações</string>
+    <string name="notice">Edital</string>
+    <string name="schedule">Cronograma</string>
+    <string name="documents_to_apply">Documentos para inscrição</string>
+    <string name="promotional_folder">Folder de divulgação</string>
+    <string name="electoral_commission">Comissão eleitoral</string>
+    <string name="electoral_sections">Seções eleitorais</string>
+    <string name="result">Resultado</string>
+    <string name="googleUrl">http://docs.google.com/gview?embedded=true&amp;url=</string>
+    <string name="notice_url">http://www.itapeviprev.com.br/app/edital.pdf</string>
+    <string name="schedule_url">http://www.itapeviprev.com.br/app/cronograma.pdf</string>
+    <string name="promotional_folder_url">https://www.itapeviprev.com.br/app/folder.pdf</string>
+    <string name="electoral_commission_url">http://www.itapeviprev.com.br/app/comissao.pdf</string>
+    <string name="electoral_session_url">http://www.itapeviprev.com.br/app/secao.pdf</string>
+    <string name="result_url">http://www.itapeviprev.com.br/app/resultado.pdf</string>
+
+    <!-- Candidates -->
+    <string name="all_candidates">Todos os candidatos</string>
+    <string name="administrative_council">Conselho administrativo</string>
+    <string name="carla_queiroz">Carla Queiroz Leite dos Santos</string>
+    <string name="carla_nickname">Apelido: Carla do Gerenciamento de Conta</string>
+    <string name="juliana_laguna">Juliana Laguna</string>
+    <string name="juliana_nickname">Apelido: Juliana Laguna da Contabilidade</string>
+    <string name="marco_antonio">Marco Antonio Silva</string>
+    <string name="marco_nickname">Apelido: Marquinho do Transporte</string>
+    <string name="antonia_vieira">Antônia Vieira Leite</string>
+    <string name="antonia_nickname">Apelido: Antônia/ Educação</string>
+    <string name="nubia_morais">Núbia Morais Sousa Furtado</string>
+    <string name="nubia_nickname">Apelido: Núbia do RH</string>
+    <string name="giseli_adriana">Giseli Adriana Muller da Silva</string>
+    <string name="giseli_nickname">Apelido: Giseli Muller</string>
+    <string name="fabio_abduch">Fábio Abduch Tambasco</string>
+    <string name="fabio_nickname">Apelido: Fábio Abduch</string>
+
+    <!-- Documents to Apply screen -->
+    <string name="list_of_documents">• Cópia do RG.\n• Cópia da inscrição no cadastro das pessoas físicas do Ministério da Fazenda - CPF-MF\n• Portaria de Nomeação.\n• Cópia do documento que comprove que concluiu o ensino médio ou o curso superior.\n• Portaria que comprove que adquiriu a estabilidade.</string>
 </resources>

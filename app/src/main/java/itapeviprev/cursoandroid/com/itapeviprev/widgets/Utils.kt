@@ -1,16 +1,24 @@
 package itapeviprev.cursoandroid.com.itapeviprev.widgets
 
 
+import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.os.Build
+import android.webkit.WebView
+import android.webkit.WebViewClient
 import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.input.OffsetMapping
 import androidx.compose.ui.text.input.TransformedText
+import androidx.compose.ui.viewinterop.AndroidView
 import com.google.accompanist.web.WebView
 import com.google.accompanist.web.rememberWebViewState
+import itapeviprev.cursoandroid.com.itapeviprev.R
 import java.text.DecimalFormat
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
@@ -56,17 +64,6 @@ fun decimalFormat(value: Double): String {
     return DecimalFormat("0.00").format(value)
 }
 
-@Composable
-fun GenericWebView(url: String) {
-
-    val webViewState = rememberWebViewState(url = url)
-
-    WebView(
-        state = webViewState,
-        modifier = Modifier.fillMaxSize()
-    )
-}
-
 @RequiresApi(Build.VERSION_CODES.O)
 fun formatDateString(date: String): String {
     return if(date.length == 8) {
@@ -80,4 +77,31 @@ fun formatDateString(date: String): String {
         date
     }
 
+}
+
+@Composable
+fun WebViewScreen(url: String) {
+    val googleDocsViewerURL = "http://docs.google.com/gview?embedded=true&url=$url"
+    AndroidView(
+        factory = { context ->
+            WebView(context).apply {
+                settings.javaScriptEnabled = true
+                webViewClient = object : WebViewClient() {
+                    override fun shouldOverrideUrlLoading(view: WebView, url: String): Boolean {
+                        return false // Let WebView handle the URL
+                    }
+                }
+                loadUrl(googleDocsViewerURL)
+            }
+        },
+        modifier = Modifier.fillMaxSize()
+    )
+}
+
+fun openWebPage(uri: Uri?, context: Context) {
+    val intent = Intent(
+        Intent.ACTION_VIEW,
+        uri
+    )
+    context.startActivity(intent)
 }

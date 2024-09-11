@@ -16,5 +16,7 @@ enum class BoardNavigationScreens {
     ImportantAnnouncementScreen,
     BenefitScreen,
     PaymentForecastScreen,
-    FundHelperScreen
+    FundHelperScreen,
+    CandidatesScreen,
+    DocumentsToApplyScreen
 }

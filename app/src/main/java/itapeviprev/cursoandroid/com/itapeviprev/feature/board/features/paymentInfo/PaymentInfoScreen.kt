@@ -24,6 +24,7 @@ import itapeviprev.cursoandroid.com.itapeviprev.R
 import itapeviprev.cursoandroid.com.itapeviprev.feature.board.navigation.BoardNavigationScreens
 import itapeviprev.cursoandroid.com.itapeviprev.widgets.GenericActionCard
 import itapeviprev.cursoandroid.com.itapeviprev.widgets.HeaderWithImageAndIcon
+import itapeviprev.cursoandroid.com.itapeviprev.widgets.openWebPage
 
 @Composable
 fun PaymentsInfoScreen(
@@ -54,7 +55,7 @@ fun PaymentsInfoScreen(
                     titleId = R.string.online_pay_stub,
                     imageResId = R.drawable.img_pay_stub
                 ) {
-                    openPayStubWebPage(payStubUri, context)
+                    openWebPage(payStubUri, context)
                 }
 
                 Spacer(modifier = Modifier.size(16.dp))
