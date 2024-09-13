@@ -180,7 +180,7 @@ fun CardGrid(cardDataList: List<CardData>, imageSlider: List<BoardSliderData>) {
                         colors = CardDefaults.cardColors(containerColor = PrimaryLightGrayTransparent)
                     ) {
                         Box(
-                            modifier = Modifier.fillMaxSize(),
+                            modifier = Modifier.fillMaxSize().padding(8.dp),
                             contentAlignment = Alignment.Center
                         ) {
                             Column(

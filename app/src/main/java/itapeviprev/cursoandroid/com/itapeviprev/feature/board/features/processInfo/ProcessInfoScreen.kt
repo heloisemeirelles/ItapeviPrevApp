@@ -78,8 +78,6 @@ fun ProcessInfoScreen(
             HeaderWithImageAndIcon(
                 imageResId = R.drawable.img_header_process_info,
                 iconTint = PrimaryBlack,
-                opacity = 0.7f,
-                backgroundColor = PrimaryLightGray
             ) {
                 navController.popBackStack()
             }
@@ -115,7 +113,9 @@ fun ProcessInfoScreen(
                         )
                         Spacer(modifier = Modifier.size(16.dp))
                         viewModel.processInfoData.forEach { item ->
-                            InfoRow(profileInfoModel = item)
+                            if (item.text.isNotEmpty()) {
+                                InfoRow(profileInfoModel = item)
+                            }
                         }
 
                         Text(
@@ -161,7 +161,7 @@ fun ProcessInfoScreen(
                             text = viewModel.protocolNumber,
                             placeholder = stringResource(id = R.string.enter_protocol_number),
                             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-                            leadingIconId = R.drawable.ic_umbrella,
+                            leadingIconId = R.drawable.ic_document,
                             isDecimal = true
                         )
                         Spacer(modifier = Modifier.size(16.dp))
@@ -191,7 +191,7 @@ fun ProcessInfoScreen(
                             text = viewModel.cpf,
                             placeholder = stringResource(id = R.string.enter_cpf),
                             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-                            leadingIconId = R.drawable.ic_person,
+                            leadingIconId = R.drawable.ic_document,
                             visualTransformation = MaskedVisualTransformation(),
                             maxLength = 11
                         )

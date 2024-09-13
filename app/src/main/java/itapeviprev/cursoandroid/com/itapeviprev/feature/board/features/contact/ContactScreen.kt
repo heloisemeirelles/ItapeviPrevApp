@@ -41,8 +41,6 @@ fun ContactScreen(
             HeaderWithImageAndIcon(
                 imageResId = R.drawable.img_header_contact,
                 iconTint = Color.White,
-                backgroundColor = PrimaryGray,
-                opacity = 0.7f
             ) {
                 navController.popBackStack()
             }

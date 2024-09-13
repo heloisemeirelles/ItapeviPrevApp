@@ -77,8 +77,6 @@ fun FundHealthScreen(navController: NavHostController) {
             HeaderWithImageAndIcon(
                 imageResId = R.drawable.img_header_fund_health,
                 iconTint = Color.White,
-                opacity = 0.6f,
-                backgroundColor = PrimaryGray
             ) {
                 navController.popBackStack()
             }

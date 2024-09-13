@@ -107,7 +107,7 @@ fun HeaderWithBackButtonAndLogo(onClick: () -> Unit) {
 }
 
 @Composable
-fun HeaderWithImageAndIcon(imageResId: Int, iconTint: Color = PrimaryBlack, opacity: Float = 1f, backgroundColor: Color = Color.Transparent, onClick: () -> Unit) {
+fun HeaderWithImageAndIcon(imageResId: Int, iconTint: Color = PrimaryBlack, onClick: () -> Unit) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -117,10 +117,9 @@ fun HeaderWithImageAndIcon(imageResId: Int, iconTint: Color = PrimaryBlack, opac
             modifier = Modifier
                 .align(Alignment.CenterVertically)
                 .wrapContentSize()
-                .background(backgroundColor)
         ) {
             Image(
-                modifier = Modifier.fillMaxSize().graphicsLayer(alpha = opacity).background(
+                modifier = Modifier.fillMaxSize().background(
                     PrimaryBlack),
                 painter = painterResource(id = imageResId),
                 contentDescription = "",

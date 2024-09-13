@@ -41,12 +41,12 @@ fun InfoRow(profileInfoModel: InfoModel) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(top = 24.dp)
+            .padding(top = 24.dp, bottom = 24.dp)
             .wrapContentHeight(),
         verticalAlignment = Alignment.CenterVertically
     ) {
         Icon(
-            modifier = Modifier.padding(24.dp),
+            modifier = Modifier.padding(start = 24.dp, end = 24.dp),
             imageVector = profileInfoModel.imageVector,
             contentDescription = "",
             tint = PrimaryBlack
@@ -57,7 +57,7 @@ fun InfoRow(profileInfoModel: InfoModel) {
                 style = MaterialTheme.typography.bodySmall
             )
             Text(
-                modifier = Modifier.padding(top = 4.dp, bottom = 24.dp),
+                modifier = Modifier.padding(top = 4.dp),
                 text = profileInfoModel.text,
                 style = MaterialTheme.typography.bodyMedium,
                 fontWeight = FontWeight.Bold
@@ -107,22 +107,28 @@ fun CustomToast(
                 .padding(16.dp),
             contentAlignment = Alignment.Center
         ) {
-            Row(modifier = Modifier
-                .fillMaxWidth()
-                .wrapContentHeight()) {
-                Box(modifier = Modifier
-                    .wrapContentSize()
-                    .background(Color.Green, shape = CircleShape)
-                    .clip(
-                        CircleShape
-                    )
-                    .padding(8.dp)) {
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .wrapContentHeight()
+            ) {
+                Box(
+                    modifier = Modifier
+                        .wrapContentSize()
+                        .background(Color.Green, shape = CircleShape)
+                        .clip(
+                            CircleShape
+                        )
+                        .padding(8.dp)
+                ) {
                     Icon(imageVector = Icons.Outlined.Check, contentDescription = "")
                 }
-                Column(modifier = Modifier
-                    .fillMaxWidth()
-                    .wrapContentSize(),
-                    verticalArrangement = Arrangement.Center) {
+                Column(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .wrapContentSize(),
+                    verticalArrangement = Arrangement.Center
+                ) {
                     Text(
                         text = title,
                         color = PrimaryBlack,
