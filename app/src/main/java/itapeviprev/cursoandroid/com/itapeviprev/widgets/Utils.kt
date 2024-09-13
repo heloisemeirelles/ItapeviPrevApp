@@ -1,12 +1,14 @@
 package itapeviprev.cursoandroid.com.itapeviprev.widgets
 
 
+import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Build
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
@@ -66,7 +68,7 @@ fun decimalFormat(value: Double): String {
 
 @RequiresApi(Build.VERSION_CODES.O)
 fun formatDateString(date: String): String {
-    return if(date.length == 8) {
+    return if (date.length == 8) {
         val inputFormatter = DateTimeFormatter.ofPattern("ddMMyyyy")
         val outputFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy")
 
@@ -103,5 +105,58 @@ fun openWebPage(uri: Uri?, context: Context) {
         Intent.ACTION_VIEW,
         uri
     )
+    context.startActivity(intent)
+}
+
+fun openWebPage(context: Context) {
+    val intent = Intent(
+        Intent.ACTION_VIEW,
+        Uri.parse(context.getString(R.string.itapevi_prev_url))
+    )
+
+    context.startActivity(intent)
+}
+
+fun openMap(context: Context) {
+    try {
+        val intent = Intent(
+            Intent.ACTION_VIEW,
+            Uri.parse(context.getString(R.string.google_maps_url))
+        )
+
+        intent.setComponent(
+            ComponentName(
+                context.getString(R.string.google_maps_package),
+                context.getString(R.string.google_maps_class_name)
+            )
+        )
+        context.startActivity(intent)
+    } catch (ex: Exception) {
+        Toast.makeText(
+            context,
+            context.getString(R.string.make_sure_maps_is_installed),
+            Toast.LENGTH_SHORT
+        ).show()
+    }
+}
+
+fun gotToEmail(context: Context) {
+    val intent = Intent(Intent.ACTION_VIEW)
+    intent.setData(Uri.parse("mailto:${context.getString(R.string.itapevi_prev_email)}"))
+    context.startActivity(intent)
+}
+
+fun dialNumber(context: Context) {
+    val intent = Intent(Intent.ACTION_DIAL).apply {
+        data = Uri.parse("tel:${context.getString(R.string.formatted_phone_number)}")
+    }
+    if (intent.resolveActivity(context.packageManager) != null) {
+        context.startActivity(intent)
+    }
+}
+
+fun openWhatsApp(context: Context) {
+    val intent = Intent(Intent.ACTION_VIEW)
+    intent.setData(Uri.parse("https://wa.me/5511959504024"))
     context.startActivity(intent)
 }

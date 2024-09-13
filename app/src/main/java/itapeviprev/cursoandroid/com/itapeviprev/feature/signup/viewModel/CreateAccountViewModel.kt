@@ -1,6 +1,5 @@
 package itapeviprev.cursoandroid.com.itapeviprev.feature.signup.viewModel
 
-import android.util.Log
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.graphics.Color
 import androidx.lifecycle.ViewModel
@@ -14,7 +13,6 @@ import itapeviprev.cursoandroid.com.itapeviprev.common.FirebaseStatus
 import itapeviprev.cursoandroid.com.itapeviprev.common.Resource
 import itapeviprev.cursoandroid.com.itapeviprev.core.data.datastore.DataStoreManager
 import itapeviprev.cursoandroid.com.itapeviprev.core.database.model.UserEntity
-import itapeviprev.cursoandroid.com.itapeviprev.feature.login.ui.LoginState
 import itapeviprev.cursoandroid.com.itapeviprev.feature.signup.domain.AddUserUseCase
 import itapeviprev.cursoandroid.com.itapeviprev.feature.signup.ui.SignUpState
 import itapeviprev.cursoandroid.com.itapeviprev.theme.PrimaryGray
@@ -25,7 +23,6 @@ import itapeviprev.cursoandroid.com.itapeviprev.widgets.emailIsValid
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 

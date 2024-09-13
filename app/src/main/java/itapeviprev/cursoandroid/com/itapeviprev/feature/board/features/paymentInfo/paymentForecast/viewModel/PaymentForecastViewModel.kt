@@ -1,13 +1,10 @@
 package itapeviprev.cursoandroid.com.itapeviprev
 
-import android.util.Log
-import androidx.compose.runtime.mutableStateListOf
 import androidx.lifecycle.ViewModel
-import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ValueEventListener
-import com.google.gson.annotations.SerializedName
 import dagger.hilt.android.lifecycle.HiltViewModel
 import itapeviprev.cursoandroid.com.itapeviprev.Months.APRIL
 import itapeviprev.cursoandroid.com.itapeviprev.Months.AUGUST
@@ -56,7 +53,7 @@ class PaymentForecastViewModel @Inject constructor(
 
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 _paymentForecastState.value = PaymentForecastState.Loading
-                Log.v("mytag", "1")
+
                 dataSnapshot.children.forEach { snapshot ->
                     val payment = snapshot.getValue(FirebasePaymentModel::class.java)
 
@@ -78,19 +75,18 @@ class PaymentForecastViewModel @Inject constructor(
                         }
                     }
                 }
-                Log.v("mytag", "2")
 
                 _paymentForecastState.value = PaymentForecastState.Complete
             }
 
             override fun onCancelled(databaseError: DatabaseError) {
-                Log.v("mytag", "3")
                 _paymentForecastState.value = PaymentForecastState.Error(databaseError.message)
             }
         }
 
         if (_paymentForecastState.value != PaymentForecastState.Complete &&
-            _paymentForecastState.value != PaymentForecastState.Loading
+            _paymentForecastState.value != PaymentForecastState.Loading &&
+            _paymentForecastState.value != PaymentForecastState.Initial
         ) {
             _paymentForecastState.value = PaymentForecastState.Error(Errors.UnexpectedError.name)
         }

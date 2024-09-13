@@ -1,6 +1,5 @@
 package itapeviprev.cursoandroid.com.itapeviprev.feature.board.features.banners.contributionSimulator.viewModel
 
-import android.util.Log
 import androidx.compose.runtime.mutableDoubleStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel

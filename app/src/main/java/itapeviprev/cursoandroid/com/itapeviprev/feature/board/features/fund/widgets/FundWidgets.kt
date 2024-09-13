@@ -2,6 +2,8 @@ package itapeviprev.cursoandroid.com.itapeviprev.feature.board.features.fund.wid
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -22,9 +24,11 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -146,10 +150,15 @@ fun OpeningHoursCard() {
 
 @Composable
 fun ContactCard(contact: ContactModel) {
+    val interactionSource = remember { MutableInteractionSource() }
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .wrapContentHeight(),
+            .wrapContentHeight()
+            .clickable(
+                interactionSource = interactionSource,
+                indication = null
+            ) { contact.onClick() },
         shape = RoundedCornerShape(8.dp),
         colors = CardDefaults.cardColors(containerColor = PrimaryBlue24)
     ) {
@@ -159,7 +168,13 @@ fun ContactCard(contact: ContactModel) {
                 .padding(16.dp), verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
-            Image(painter = painterResource(id = contact.iconId), contentDescription = "")
+            Image(
+                modifier = Modifier
+                    .size(50.dp)
+                    .background(Color.White, shape = CircleShape),
+                painter = painterResource(id = contact.iconId),
+                contentDescription = ""
+            )
             Column(
                 modifier = Modifier
                     .padding(start = 16.dp, end = 16.dp)
@@ -181,7 +196,8 @@ fun ContactCard(contact: ContactModel) {
             }
             IconButton(onClick = { contact.onClick() }) {
                 Icon(
-                    modifier = Modifier.size((34.dp)),
+                    modifier = Modifier
+                        .size((34.dp)),
                     imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,
                     contentDescription = ""
                 )

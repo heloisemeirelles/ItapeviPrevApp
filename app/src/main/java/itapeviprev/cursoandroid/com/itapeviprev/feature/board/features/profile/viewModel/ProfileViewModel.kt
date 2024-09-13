@@ -1,7 +1,6 @@
 package itapeviprev.cursoandroid.com.itapeviprev.feature.board.features.profile.viewModel
 
 import android.os.Build
-import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.DateRange
@@ -14,15 +13,15 @@ import androidx.lifecycle.viewModelScope
 import com.google.firebase.auth.FirebaseAuth
 import dagger.hilt.android.lifecycle.HiltViewModel
 import itapeviprev.cursoandroid.com.itapeviprev.R
+import itapeviprev.cursoandroid.com.itapeviprev.core.data.datastore.DataStoreManager
 import itapeviprev.cursoandroid.com.itapeviprev.core.database.model.UserEntity
 import itapeviprev.cursoandroid.com.itapeviprev.core.repository.ItapeviPrevRepository
 import itapeviprev.cursoandroid.com.itapeviprev.feature.board.features.profile.GetUserState
-import itapeviprev.cursoandroid.com.itapeviprev.feature.board.features.profile.widgets.ProfileInfoModel
+import itapeviprev.cursoandroid.com.itapeviprev.feature.board.features.profile.widgets.InfoModel
 import itapeviprev.cursoandroid.com.itapeviprev.theme.PrimaryGray
 import itapeviprev.cursoandroid.com.itapeviprev.theme.PrimaryLightGrayTransparent
 import itapeviprev.cursoandroid.com.itapeviprev.theme.PrimaryLightRed
 import itapeviprev.cursoandroid.com.itapeviprev.theme.PrimaryRed
-import itapeviprev.cursoandroid.com.itapeviprev.widgets.ErrorDialog
 import itapeviprev.cursoandroid.com.itapeviprev.widgets.formatDateString
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -32,7 +31,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ProfileViewModel @Inject constructor(
-    private val itapeviPrevRepository: ItapeviPrevRepository
+    private val itapeviPrevRepository: ItapeviPrevRepository,
+    private val dataStoreManager: DataStoreManager
 ) :
     ViewModel() {
     private val auth = FirebaseAuth.getInstance()
@@ -40,8 +40,8 @@ class ProfileViewModel @Inject constructor(
     private val _getUserState = MutableStateFlow<GetUserState>(GetUserState.Initial)
     val getUserState: StateFlow<GetUserState> = _getUserState
 
-    private val _profileInfoList = MutableStateFlow<List<ProfileInfoModel>>(arrayListOf())
-    val profileInfoList: StateFlow<List<ProfileInfoModel>> = _profileInfoList
+    private val _profileInfoList = MutableStateFlow<List<InfoModel>>(arrayListOf())
+    val profileInfoList: StateFlow<List<InfoModel>> = _profileInfoList
 
     val editView = mutableStateOf(false)
     val showDialog = mutableStateOf(false)
@@ -52,7 +52,6 @@ class ProfileViewModel @Inject constructor(
     val fullNameHasFocus = mutableStateOf(false)
     val isFullNameValid = mutableStateOf(false)
 
-    val infoSuccessfullyUpdated = mutableStateOf(false)
     val isNewInfo = mutableStateOf(false)
 
     private fun isFullNameValid(): Boolean {
@@ -89,7 +88,7 @@ class ProfileViewModel @Inject constructor(
             try {
                 if (userEntity == null) {
                     _profileInfoList.value = arrayListOf(
-                        ProfileInfoModel(
+                        InfoModel(
                             Icons.Outlined.Email,
                             R.string.email,
                             auth.currentUser?.email.toString()
@@ -110,19 +109,19 @@ class ProfileViewModel @Inject constructor(
 
 
     @RequiresApi(Build.VERSION_CODES.O)
-    private fun getProfileInfo(userEntity: UserEntity): List<ProfileInfoModel> {
+    private fun getProfileInfo(userEntity: UserEntity): List<InfoModel> {
         return arrayListOf(
-            ProfileInfoModel(
+            InfoModel(
                 Icons.Outlined.Person,
                 R.string.name,
                 userEntity.fullName.toString()
             ),
-            ProfileInfoModel(
+            InfoModel(
                 Icons.Outlined.DateRange,
                 R.string.date_of_birth,
                 formatDateString(userEntity.dateOfBirth.toString())
             ),
-            ProfileInfoModel(
+            InfoModel(
                 Icons.Outlined.Email,
                 R.string.email,
                 userEntity.email.toString()
@@ -187,6 +186,10 @@ class ProfileViewModel @Inject constructor(
         auth.signOut()
         if (auth.currentUser == null) _getUserState.value =
             GetUserState.UserSignedOut else _getUserState.value = GetUserState.ErrorSignOut
+        viewModelScope.launch {
+            dataStoreManager.cleanDataStore()
+        }
+
     }
 
     fun refreshState() {

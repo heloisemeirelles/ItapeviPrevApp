@@ -2,7 +2,6 @@ package itapeviprev.cursoandroid.com.itapeviprev.feature.board.features.profile
 
 import android.app.Activity
 import android.os.Build
-import android.util.Log
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.compose.foundation.Image
@@ -41,12 +40,13 @@ import itapeviprev.cursoandroid.com.itapeviprev.R
 import itapeviprev.cursoandroid.com.itapeviprev.feature.board.features.profile.viewModel.ProfileViewModel
 import itapeviprev.cursoandroid.com.itapeviprev.feature.board.features.profile.widgets.DateOfBirthField
 import itapeviprev.cursoandroid.com.itapeviprev.feature.board.features.profile.widgets.FullNameField
-import itapeviprev.cursoandroid.com.itapeviprev.feature.board.features.profile.widgets.ProfileInfoRow
 import itapeviprev.cursoandroid.com.itapeviprev.feature.board.features.profile.widgets.UpdateDataDialog
 import itapeviprev.cursoandroid.com.itapeviprev.navigation.AppNavigationScreens
 import itapeviprev.cursoandroid.com.itapeviprev.theme.PrimaryBlue
+import itapeviprev.cursoandroid.com.itapeviprev.widgets.CustomCircularProgressBar
 import itapeviprev.cursoandroid.com.itapeviprev.widgets.ErrorDialog
 import itapeviprev.cursoandroid.com.itapeviprev.widgets.HeaderWithOneIcon
+import itapeviprev.cursoandroid.com.itapeviprev.widgets.InfoRow
 import itapeviprev.cursoandroid.com.itapeviprev.widgets.RoundedButton
 import kotlin.system.exitProcess
 
@@ -67,11 +67,7 @@ fun ProfileScreen(navController: NavHostController, viewModel: ProfileViewModel 
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                CircularProgressIndicator(
-                    color = PrimaryBlue,
-                    modifier = Modifier
-                        .size(50.dp)
-                )
+                CustomCircularProgressBar()
             }
         }
 
@@ -103,7 +99,7 @@ fun ProfileScreen(navController: NavHostController, viewModel: ProfileViewModel 
 
         is GetUserState.InfoUpdated -> {
             viewModel.editView.value = false
-            Toast.makeText(context, "Atualizado", Toast.LENGTH_LONG).show()
+            Toast.makeText(context, stringResource(id = R.string.updated), Toast.LENGTH_LONG).show()
             viewModel.refreshState()
         }
 
@@ -177,7 +173,7 @@ fun ProfileScreen(navController: NavHostController, viewModel: ProfileViewModel 
                         )
                     } else {
                         profileInfoList.forEach {
-                            ProfileInfoRow(profileInfoModel = it)
+                            InfoRow(profileInfoModel = it)
                         }
                     }
                 }

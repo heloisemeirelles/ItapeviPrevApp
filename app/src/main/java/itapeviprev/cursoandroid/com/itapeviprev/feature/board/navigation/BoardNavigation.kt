@@ -16,12 +16,12 @@ import itapeviprev.cursoandroid.com.itapeviprev.feature.board.features.contact.C
 import itapeviprev.cursoandroid.com.itapeviprev.feature.board.features.council.CouncilScreen
 import itapeviprev.cursoandroid.com.itapeviprev.feature.board.features.council.candidates.CandidatesScreen
 import itapeviprev.cursoandroid.com.itapeviprev.feature.board.features.council.documentsToApply.DocumentsToApplyScreen
-import itapeviprev.cursoandroid.com.itapeviprev.feature.board.features.fundHealthScreen.FundHealthScreen
+import itapeviprev.cursoandroid.com.itapeviprev.feature.board.features.fundHealth.FundHealthScreen
 import itapeviprev.cursoandroid.com.itapeviprev.feature.board.features.fund.FundScreen
 import itapeviprev.cursoandroid.com.itapeviprev.feature.board.features.fund.fundHelper.FundHelperScreen
 import itapeviprev.cursoandroid.com.itapeviprev.feature.board.features.paymentInfo.PaymentsInfoScreen
 import itapeviprev.cursoandroid.com.itapeviprev.feature.board.features.pdfLcl.PdfLclScreen
-import itapeviprev.cursoandroid.com.itapeviprev.feature.board.features.processInfoScreen.ProcessInfoScreen
+import itapeviprev.cursoandroid.com.itapeviprev.feature.board.features.processInfo.ProcessInfoScreen
 import itapeviprev.cursoandroid.com.itapeviprev.feature.board.features.profile.ProfileScreen
 
 @RequiresApi(Build.VERSION_CODES.O)
@@ -47,7 +47,7 @@ fun NavGraphBuilder.boardNavigation(navController: NavHostController) {
         }
 
         composable(route = BoardNavigationScreens.FundHealthScreen.name) {
-            FundHealthScreen()
+            FundHealthScreen(navController)
         }
 
         composable(route = BoardNavigationScreens.FundScreen.name) {
@@ -55,7 +55,7 @@ fun NavGraphBuilder.boardNavigation(navController: NavHostController) {
         }
 
         composable(route = BoardNavigationScreens.ProcessInfoScreen.name) {
-            ProcessInfoScreen()
+            ProcessInfoScreen(navController)
         }
 
         composable(route = BoardNavigationScreens.CouncilScreen.name) {
@@ -63,7 +63,7 @@ fun NavGraphBuilder.boardNavigation(navController: NavHostController) {
         }
 
         composable(route = BoardNavigationScreens.ContactScreen.name) {
-            ContactScreen()
+            ContactScreen(navController)
         }
 
         composable(route = BoardNavigationScreens.ContributionSimulatorScreen.name) {

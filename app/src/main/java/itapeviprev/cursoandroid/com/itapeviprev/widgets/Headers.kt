@@ -1,6 +1,7 @@
 package itapeviprev.cursoandroid.com.itapeviprev.widgets
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -20,6 +21,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ColorFilter
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -104,7 +107,7 @@ fun HeaderWithBackButtonAndLogo(onClick: () -> Unit) {
 }
 
 @Composable
-fun HeaderWithImageAndIcon(imageResId: Int, iconTint: Color = PrimaryBlack, onClick: () -> Unit) {
+fun HeaderWithImageAndIcon(imageResId: Int, iconTint: Color = PrimaryBlack, opacity: Float = 1f, backgroundColor: Color = Color.Transparent, onClick: () -> Unit) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -114,12 +117,14 @@ fun HeaderWithImageAndIcon(imageResId: Int, iconTint: Color = PrimaryBlack, onCl
             modifier = Modifier
                 .align(Alignment.CenterVertically)
                 .wrapContentSize()
+                .background(backgroundColor)
         ) {
             Image(
-                modifier = Modifier.fillMaxSize(),
+                modifier = Modifier.fillMaxSize().graphicsLayer(alpha = opacity).background(
+                    PrimaryBlack),
                 painter = painterResource(id = imageResId),
                 contentDescription = "",
-                contentScale = ContentScale.Crop
+                contentScale = ContentScale.Crop,
             )
             IconButton(modifier = Modifier.padding(32.dp), onClick = { onClick() }) {
                 Icon(

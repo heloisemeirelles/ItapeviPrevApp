@@ -23,9 +23,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.OffsetMapping
 import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.input.TransformedText
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -51,7 +54,9 @@ fun RoundedTextField(
     singleLine: Boolean = true,
     errorMessage: String = "",
     isOnFocus: MutableState<Boolean> = mutableStateOf(false),
-    maxLength: Int = 0
+    maxLength: Int = 0,
+    isDecimal: Boolean = false,
+    format: (newText: String) -> String = { ("") }
 ) {
     Column(
         modifier = Modifier
@@ -96,13 +101,14 @@ fun RoundedTextField(
             },
 
             value = text.value, onValueChange = { newText ->
-                if (newText.all { it.isDigit() || it == '.' || it == ',' }) {
-                    text.value = if (maxLength != 0) {
-                        newText.take(maxLength)
-                    } else {
-                        newText
+                if (isDecimal) {
+                    if (newText.all { it.isDigit() || it == '.' || it == ',' }) {
+                        text.value = getNewText(maxLength, newText, format)
                     }
+                } else {
+                    text.value = getNewText(maxLength, newText, format)
                 }
+
 
             },
             colors = TextFieldDefaults.textFieldColors(
@@ -128,6 +134,24 @@ fun RoundedTextField(
                 Text(text = errorMessage, style = MaterialTheme.typography.bodySmall)
             }
         }
+    }
+}
+
+private fun getNewText(
+    maxLength: Int,
+    newText: String,
+    format: (data: String) -> String,
+): String {
+    val newValue = if (maxLength != 0) {
+        newText.take(maxLength)
+    } else {
+        newText
+    }
+
+    return if (format(newValue) != "") {
+        format(newValue)
+    } else {
+        newValue
     }
 }
 
@@ -216,3 +240,44 @@ fun PasswordTextField(
         }
     }
 }
+
+fun formatToMask(text: String): String {
+    return when {
+        text.length <= 3 -> text
+        text.length <= 6 -> "${text.substring(0, 3)}.${text.substring(3)}"
+        text.length <= 9 -> "${text.substring(0, 3)}.${text.substring(3, 6)}.${text.substring(6)}"
+        else -> "${text.substring(0, 3)}.${text.substring(3, 6)}.${
+            text.substring(
+                6,
+                9
+            )
+        }-${text.substring(9)}"
+    }
+}
+
+class MaskedVisualTransformation : VisualTransformation {
+    override fun filter(text: AnnotatedString): TransformedText {
+        val originalText = text.text
+        val cleanedText = originalText.filter { it.isDigit() }
+        val formattedText = formatToMask(cleanedText)
+
+        val offsetMapping = object : OffsetMapping {
+            override fun originalToTransformed(offset: Int): Int {
+                val cleaned = originalText.take(offset).filter { it.isDigit() }
+                val formatted = formatToMask(cleaned)
+                return formatted.length
+            }
+
+            override fun transformedToOriginal(offset: Int): Int {
+                val cleaned = formattedText.take(offset).filter { it.isDigit() }
+                return cleaned.length
+            }
+        }
+
+        return TransformedText(
+            text = AnnotatedString(formattedText),
+            offsetMapping = offsetMapping
+        )
+    }
+}
+

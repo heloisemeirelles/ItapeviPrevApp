@@ -86,7 +86,8 @@ fun ContributionSimulatorBody(text: MutableState<String>, showSimulation: Mutabl
                 leadingIconId = R.drawable.ic_dolar_sign,
                 text = text,
                 placeholder = stringResource(id = R.string.add_contribution_value),
-                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
+                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+                isDecimal = true
             )
             Spacer(modifier = Modifier.size(32.dp))
         }

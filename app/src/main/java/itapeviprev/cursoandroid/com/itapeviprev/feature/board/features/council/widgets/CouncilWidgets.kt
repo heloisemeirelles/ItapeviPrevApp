@@ -57,7 +57,7 @@ fun CandidateCard(goToCandidateScreen: () -> Unit) {
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Image(
                     modifier = Modifier.size(48.dp),
-                    painter = painterResource(id = R.drawable.ic_candidates),
+                    painter = painterResource(id = R.drawable.ic_board_the_fund),
                     contentDescription = ""
                 )
                 Spacer(modifier = Modifier.size(16.dp))

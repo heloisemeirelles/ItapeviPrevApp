@@ -42,35 +42,7 @@ import itapeviprev.cursoandroid.com.itapeviprev.widgets.RoundedButton
 import itapeviprev.cursoandroid.com.itapeviprev.widgets.RoundedTextField
 import itapeviprev.cursoandroid.com.itapeviprev.widgets.formatDateInput
 
-@Composable
-fun ProfileInfoRow(profileInfoModel: ProfileInfoModel) {
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(top = 24.dp)
-            .wrapContentHeight(),
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        Icon(
-            modifier = Modifier.padding(24.dp),
-            imageVector = profileInfoModel.imageVector,
-            contentDescription = "",
-            tint = PrimaryBlack
-        )
-        Column(modifier = Modifier.fillMaxWidth(), verticalArrangement = Arrangement.Center) {
-            Text(
-                text = stringResource(id = profileInfoModel.titleId),
-                style = MaterialTheme.typography.bodySmall
-            )
-            Text(
-                modifier = Modifier.padding(top = 4.dp), text = profileInfoModel.text,
-                style = MaterialTheme.typography.bodyMedium,
-                fontWeight = FontWeight.Bold
-            )
-        }
-    }
-    Divider(color = PrimaryLightGray)
-}
+
 
 @Composable
 fun UpdateDataDialog(
@@ -186,7 +158,7 @@ fun FullNameField(
     Spacer(modifier = Modifier.size(16.dp))
 }
 
-data class ProfileInfoModel(
+data class InfoModel(
     val imageVector: ImageVector,
     val titleId: Int,
     val text: String

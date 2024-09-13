@@ -1,6 +1,5 @@
 package itapeviprev.cursoandroid.com.itapeviprev
 
-import android.util.Log
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -8,7 +7,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -17,7 +15,6 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -27,7 +24,7 @@ import androidx.navigation.NavHostController
 import itapeviprev.cursoandroid.com.itapeviprev.feature.board.features.paymentInfo.paymentForecast.utils.LawInformative
 import itapeviprev.cursoandroid.com.itapeviprev.feature.board.features.paymentInfo.paymentForecast.utils.PaymentForecastCardSlider
 import itapeviprev.cursoandroid.com.itapeviprev.feature.board.features.paymentInfo.paymentForecast.utils.PaymentForecastState
-import itapeviprev.cursoandroid.com.itapeviprev.theme.PrimaryBlue
+import itapeviprev.cursoandroid.com.itapeviprev.widgets.CustomCircularProgressBar
 import itapeviprev.cursoandroid.com.itapeviprev.widgets.ErrorDialog
 import itapeviprev.cursoandroid.com.itapeviprev.widgets.HeaderWithImageAndIcon
 import kotlin.system.exitProcess
@@ -53,14 +50,10 @@ fun PaymentForecastScreen(
             ) {
                 when (paymentForecastState) {
                     is PaymentForecastState.Initial -> viewModel.fetchPaymentData()
-                    is PaymentForecastState.Loading -> CircularProgressIndicator(
-                        color = PrimaryBlue,
-                        modifier = Modifier
-                            .size(50.dp)
-                            .align(Alignment.CenterHorizontally)
-                    )
+                    is PaymentForecastState.Loading -> CustomCircularProgressBar()
 
                     is PaymentForecastState.Complete -> {
+                        showErrorDialog.value = false
                         Text(
                             text = stringResource(id = R.string.payment_forecast_for_ITAPEVIPREV_recipients),
                             style = MaterialTheme.typography.labelLarge,
@@ -87,7 +80,8 @@ fun PaymentForecastScreen(
                 if (showErrorDialog.value) {
                     ErrorDialog(onDismissClick = {
                         viewModel.refreshState()
-                        showErrorDialog.value = false },
+                        showErrorDialog.value = false
+                    },
                         onTryAgain = {
                             showErrorDialog.value = false
                             viewModel.refreshState()

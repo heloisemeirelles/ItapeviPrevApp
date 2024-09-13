@@ -198,7 +198,7 @@ private fun PaymentStatus(status: String) {
             text = status,
             style = MaterialTheme.typography.bodySmall,
             fontWeight = FontWeight.SemiBold,
-            modifier = Modifier.padding(4.dp)
+            modifier = Modifier.padding(4.dp, end = 8.dp)
         )
     }
 }
