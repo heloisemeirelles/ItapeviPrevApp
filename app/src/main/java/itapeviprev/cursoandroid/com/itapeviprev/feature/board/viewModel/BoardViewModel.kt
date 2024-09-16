@@ -29,6 +29,10 @@ class BoardViewModel @Inject constructor(
         }
     }
 
+    fun getUserEmail(): String {
+        return FirebaseAuth.getInstance().currentUser?.email.toString()
+    }
+
     fun getCardInfo(controllerAction: (String) -> Unit): List<CardData> {
         return listOf(
             CardData(R.drawable.ic_board_benefits, R.string.benefits) {
@@ -36,30 +40,30 @@ class BoardViewModel @Inject constructor(
                     BoardNavigationScreens.BenefitsListScreen.name
                 )
             },
-            CardData(
-                R.drawable.ic_board_pdf_lcl,
-                R.string.pdf_lcl
-            )
-            { controllerAction(BoardNavigationScreens.PdfLclScreen.name) },
             CardData(R.drawable.ic_board_payment_info, R.string.payment_info) {
                 controllerAction(
                     BoardNavigationScreens.PaymentsInfoScreen.name
                 )
             },
-            CardData(R.drawable.ic_board_health_fund, R.string.fund_health) {
-                controllerAction(BoardNavigationScreens.FundHealthScreen.name)
-            },
-            CardData(R.drawable.ic_board_the_fund, R.string.the_fund) {
-                controllerAction(BoardNavigationScreens.FundScreen.name)
-            },
             CardData(R.drawable.ic_board_process_info, R.string.process_information) {
                 controllerAction(BoardNavigationScreens.ProcessInfoScreen.name)
+            },
+            CardData(R.drawable.ic_board_health_fund, R.string.fund_health) {
+                controllerAction(BoardNavigationScreens.FundHealthScreen.name)
             },
             CardData(R.drawable.ic_board_council, R.string.council) {
                 controllerAction(BoardNavigationScreens.CouncilScreen.name)
             },
             CardData(R.drawable.ic_board_contact, R.string.contact) {
                 controllerAction(BoardNavigationScreens.ContactScreen.name)
+            },
+            CardData(
+                R.drawable.ic_board_pdf_lcl,
+                R.string.pdf_lcl
+            )
+            { controllerAction(BoardNavigationScreens.PdfLclScreen.name) },
+            CardData(R.drawable.ic_board_the_fund, R.string.the_fund) {
+                controllerAction(BoardNavigationScreens.FundScreen.name)
             },
         )
     }
