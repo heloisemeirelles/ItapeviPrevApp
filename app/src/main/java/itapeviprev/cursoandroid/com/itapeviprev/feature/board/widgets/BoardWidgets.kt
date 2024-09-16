@@ -4,6 +4,8 @@ package itapeviprev.cursoandroid.com.itapeviprev.feature.board.widgets
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -31,6 +33,7 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -141,6 +144,8 @@ private fun BoardItem(
 
 @Composable
 fun CardGrid(cardDataList: List<CardData>, imageSlider: List<BoardSliderData>) {
+    val interactionSource = remember { MutableInteractionSource() }
+
     LazyColumn {
         item {
             BoardSlider(imageSlider)
@@ -174,7 +179,10 @@ fun CardGrid(cardDataList: List<CardData>, imageSlider: List<BoardSliderData>) {
                                 end = if (rowItems.first() == cardData) 8.dp else 0.dp,
                                 start = if (rowItems.last() == cardData) 8.dp else 0.dp,
                                 bottom = 16.dp
-                            ),
+                            )
+                            .clickable(interactionSource = interactionSource, null) {
+                                cardData.onClickAction()
+                            },
                         shape = RoundedCornerShape(8.dp),
                         border = BorderStroke(1.dp, PrimaryLightGray),
                         colors = CardDefaults.cardColors(containerColor = PrimaryLightGrayTransparent)

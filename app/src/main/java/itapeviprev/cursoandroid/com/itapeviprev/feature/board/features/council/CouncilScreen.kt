@@ -40,8 +40,12 @@ fun CouncilScreen(
     val showWebView = remember { mutableStateOf(false) }
 
     BackHandler {
-        showWebView.value = false
-        currentWebViewUrl.value = null
+        if(!showWebView.value) {
+            navController.popBackStack()
+        } else {
+            showWebView.value = false
+            currentWebViewUrl.value = null
+        }
     }
 
     Surface(modifier = Modifier.fillMaxSize()) {

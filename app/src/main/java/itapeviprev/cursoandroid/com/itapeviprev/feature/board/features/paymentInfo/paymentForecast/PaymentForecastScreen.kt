@@ -11,6 +11,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -37,6 +38,11 @@ fun PaymentForecastScreen(
     val showErrorDialog = remember { mutableStateOf(false) }
     val paymentForecastState by viewModel.paymentForecastState.collectAsState(initial = true)
 
+    LaunchedEffect(Unit) {
+        viewModel.fetchPaymentData()
+
+    }
+
     Surface(modifier = Modifier.fillMaxSize()) {
         Column(modifier = Modifier.fillMaxSize()) {
             HeaderWithImageAndIcon(imageResId = R.drawable.img_payment_forecast) {
@@ -49,7 +55,6 @@ fun PaymentForecastScreen(
                     .verticalScroll(rememberScrollState())
             ) {
                 when (paymentForecastState) {
-                    is PaymentForecastState.Initial -> viewModel.fetchPaymentData()
                     is PaymentForecastState.Loading -> CustomCircularProgressBar()
 
                     is PaymentForecastState.Complete -> {
@@ -74,6 +79,8 @@ fun PaymentForecastScreen(
                     is PaymentForecastState.Error -> {
                         showErrorDialog.value = true
                     }
+
+                    else -> {}
 
                 }
 

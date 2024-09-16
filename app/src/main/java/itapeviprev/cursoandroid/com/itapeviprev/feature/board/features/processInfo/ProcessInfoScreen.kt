@@ -65,7 +65,12 @@ fun ProcessInfoScreen(
     val showErrorDialog = remember { mutableStateOf(false) }
 
     BackHandler {
-        viewModel.refreshState()
+        if (processInfoState == ProcessInfoState.Initial) {
+            navController.popBackStack()
+        } else {
+            viewModel.refreshState()
+
+        }
     }
 
     Surface(modifier = Modifier.fillMaxSize()) {
