@@ -34,10 +34,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.google.accompanist.pager.ExperimentalPagerApi
-import com.google.accompanist.pager.HorizontalPager
-import com.google.accompanist.pager.HorizontalPagerIndicator
-import com.google.accompanist.pager.rememberPagerState
 import itapeviprev.cursoandroid.com.itapeviprev.FirebasePaymentModel
 import itapeviprev.cursoandroid.com.itapeviprev.PaymentSituation
 import itapeviprev.cursoandroid.com.itapeviprev.R
@@ -53,10 +49,9 @@ import itapeviprev.cursoandroid.com.itapeviprev.theme.PrimaryYellow
 import itapeviprev.cursoandroid.com.itapeviprev.theme.RedLight
 import itapeviprev.cursoandroid.com.itapeviprev.theme.YellowLight
 
-@OptIn(ExperimentalPagerApi::class)
+
 @Composable
 fun PaymentForecastCardSlider(paymentList: MutableList<MutableList<FirebasePaymentModel?>>) {
-    val pagerState = rememberPagerState(initialPage = 0)
     Column(
         modifier = Modifier
             .wrapContentHeight()
@@ -64,23 +59,13 @@ fun PaymentForecastCardSlider(paymentList: MutableList<MutableList<FirebasePayme
         verticalArrangement = Arrangement.Top,
         horizontalAlignment = Alignment.Start
     ) {
-        HorizontalPager(
-            state = pagerState,
-            count = paymentList.size,
-            modifier = Modifier
-                .wrapContentHeight()
-                .fillMaxWidth(),
-            verticalAlignment = Alignment.Top
-        ) { page ->
-            PaymentForecastCard(page, paymentList)
-        }
+        paymentList.forEachIndexed { index, firebasePaymentModels ->
+            PaymentForecastCard(index, paymentList)
+            if (paymentList.last() != firebasePaymentModels) {
+                Spacer(modifier = Modifier.size(24.dp))
+            }
 
-        HorizontalPagerIndicator(
-            pagerState = pagerState,
-            modifier = Modifier
-                .align(Alignment.CenterHorizontally)
-                .padding(16.dp)
-        )
+        }
     }
 }
 
@@ -274,11 +259,13 @@ fun LawInformative() {
 
 fun PaymentForecastCardPreview() {
     val list = mutableListOf(
-        mutableListOf<FirebasePaymentModel?>(FirebasePaymentModel(
-            "Janeiro",
-            "02 de fevereiro",
-            "PAGO"
-        ))
+        mutableListOf<FirebasePaymentModel?>(
+            FirebasePaymentModel(
+                "Janeiro",
+                "02 de fevereiro",
+                "PAGO"
+            )
+        )
     )
     Surface(modifier = Modifier.fillMaxSize()) {
         Column(
