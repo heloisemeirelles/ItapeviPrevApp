@@ -17,9 +17,9 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@drawable/titulo"
+        android:icon="@drawable/ic_logo_itapevi"
         android:label="@string/app_name"
-        android:roundIcon="@drawable/splash_icon"
+        android:roundIcon="@drawable/ic_logo_itapevi"
         android:supportsRtl="true"
         android:theme="@style/Theme.ItapeviPrev.MySplash"
         tools:targetApi="31">
